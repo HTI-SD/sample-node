@@ -1,0 +1,344 @@
+<%- include('partials/header', { title: 'Expert Consultation – FarmSeva', activePage: 'consultation' }) %>
+
+<div class="bg-gradient-to-r from-purple-800 to-purple-600 py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center space-x-2 text-purple-300 text-sm mb-3">
+      <a href="/" class="hover:text-white">Home</a><span>/</span>
+      <span class="text-white">Expert Consultation</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">👨‍💼 Expert Consultation</h1>
+    <p class="text-purple-200">Connect with certified agricultural experts. First session free!</p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+  <!-- Service type tabs -->
+  <div class="flex flex-wrap gap-2 mb-7">
+    <button onclick="filterExpert('all', this)" class="expert-tab active-expert-tab">🌾 All Experts</button>
+    <button onclick="filterExpert('soil', this)" class="expert-tab">🧪 Soil Testing</button>
+    <button onclick="filterExpert('crop', this)" class="expert-tab">🌾 Crop Advisory</button>
+    <button onclick="filterExpert('organic', this)" class="expert-tab">🌿 Organic Farming</button>
+    <button onclick="filterExpert('pest', this)" class="expert-tab">🐛 Pest Control</button>
+    <button onclick="filterExpert('repair', this)" class="expert-tab">🔧 Equipment Repair</button>
+  </div>
+
+  <!-- Expert cards grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="expert-grid">
+
+    <!-- Expert 1 -->
+    <div class="expert-card" data-type="soil crop" data-aos="fade-up" data-aos-delay="0">
+      <div class="flex items-start space-x-4 mb-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-700 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">RS</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-gray-900">Dr. Ramesh Shah</h4>
+            <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Online</span>
+          </div>
+          <p class="text-sm text-purple-600 font-medium">Soil Scientist</p>
+          <div class="flex items-center space-x-2 text-xs text-gray-400 mt-1">
+            <span>⭐ 4.9</span>
+            <span>•</span>
+            <span>15 yrs exp</span>
+            <span>•</span>
+            <span>320 consults</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-sm mb-4">Specialist in soil health analysis, micro-nutrient deficiency diagnosis, and fertilizer recommendations for Gujarat/Rajasthan farmers.</p>
+      <div class="flex flex-wrap gap-1 mb-4">
+        <span class="expert-tag">🧪 Soil Testing</span>
+        <span class="expert-tag">🌾 Crop Advisory</span>
+        <span class="expert-tag">💊 Fertilizers</span>
+      </div>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div>
+          <span class="text-xl font-bold text-farm-700">₹200</span>
+          <span class="text-gray-400 text-xs">/30min</span>
+          <div class="text-xs text-green-600 font-medium">First session FREE</div>
+        </div>
+        <button onclick="openConsultModal('Dr. Ramesh Shah', '200', 'Soil Testing & Crop Advisory')" class="book-btn">Book Call</button>
+      </div>
+    </div>
+
+    <!-- Expert 2 -->
+    <div class="expert-card" data-type="crop pest organic" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-start space-x-4 mb-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-400 to-pink-700 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">MP</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-gray-900">Dr. Meena Patel</h4>
+            <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Online</span>
+          </div>
+          <p class="text-sm text-purple-600 font-medium">Plant Pathologist</p>
+          <div class="flex items-center space-x-2 text-xs text-gray-400 mt-1">
+            <span>⭐ 5.0</span>
+            <span>•</span>
+            <span>10 yrs exp</span>
+            <span>•</span>
+            <span>189 consults</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-sm mb-4">Expert in identifying crop diseases, fungal infections, and recommending integrated pest management solutions.</p>
+      <div class="flex flex-wrap gap-1 mb-4">
+        <span class="expert-tag">🐛 Pest Control</span>
+        <span class="expert-tag">🌾 Crop Disease</span>
+        <span class="expert-tag">🌿 Organic</span>
+      </div>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div>
+          <span class="text-xl font-bold text-farm-700">₹250</span>
+          <span class="text-gray-400 text-xs">/30min</span>
+          <div class="text-xs text-green-600 font-medium">First session FREE</div>
+        </div>
+        <button onclick="openConsultModal('Dr. Meena Patel', '250', 'Plant Pathology & Pest Control')" class="book-btn">Book Call</button>
+      </div>
+    </div>
+
+    <!-- Expert 3 -->
+    <div class="expert-card" data-type="organic crop" data-aos="fade-up" data-aos-delay="160">
+      <div class="flex items-start space-x-4 mb-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-farm-500 to-farm-800 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">AS</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-gray-900">Dr. Arun Singh</h4>
+            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Busy (1hr)</span>
+          </div>
+          <p class="text-sm text-purple-600 font-medium">Organic Farming Expert</p>
+          <div class="flex items-center space-x-2 text-xs text-gray-400 mt-1">
+            <span>⭐ 4.8</span>
+            <span>•</span>
+            <span>20 yrs exp</span>
+            <span>•</span>
+            <span>540 consults</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-sm mb-4">Pioneer of natural farming techniques in Gujarat. Helps farmers transition to zero-budget natural farming (ZBNF).</p>
+      <div class="flex flex-wrap gap-1 mb-4">
+        <span class="expert-tag">🌿 ZBNF</span>
+        <span class="expert-tag">🌾 Natural Farming</span>
+        <span class="expert-tag">🐄 Cow-based</span>
+      </div>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div>
+          <span class="text-xl font-bold text-farm-700">₹300</span>
+          <span class="text-gray-400 text-xs">/30min</span>
+          <div class="text-xs text-green-600 font-medium">First session FREE</div>
+        </div>
+        <button onclick="openConsultModal('Dr. Arun Singh', '300', 'Organic Farming & ZBNF')" class="book-btn">Book Call</button>
+      </div>
+    </div>
+
+    <!-- Expert 4 - Repair -->
+    <div class="expert-card" data-type="repair" data-aos="fade-up" data-aos-delay="0">
+      <div class="flex items-start space-x-4 mb-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-400 to-red-700 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">VK</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-gray-900">Vijay Khatri</h4>
+            <span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-bold">🚨 Emergency</span>
+          </div>
+          <p class="text-sm text-red-600 font-medium">Tractor & Pump Mechanic</p>
+          <div class="flex items-center space-x-2 text-xs text-gray-400 mt-1">
+            <span>⭐ 4.7</span>
+            <span>•</span>
+            <span>12 yrs exp</span>
+            <span>•</span>
+            <span>280 repairs</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-sm mb-4">Fast-response repair specialist for tractors, pumps, and drip irrigation. Reaches within 2 hours in emergency.</p>
+      <div class="flex flex-wrap gap-1 mb-4">
+        <span class="expert-tag">🔧 Tractor Repair</span>
+        <span class="expert-tag">💧 Pump Repair</span>
+        <span class="expert-tag">⚡ Emergency</span>
+      </div>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div>
+          <span class="text-xl font-bold text-red-600">₹500</span>
+          <span class="text-gray-400 text-xs">/visit</span>
+          <div class="text-xs text-red-500 font-medium">2hr Emergency Response</div>
+        </div>
+        <button onclick="openConsultModal('Vijay Khatri', '500', 'Emergency Repair')" class="book-btn bg-red-600 hover:bg-red-700">Emergency Book</button>
+      </div>
+    </div>
+
+    <!-- Expert 5 - Irrigation -->
+    <div class="expert-card" data-type="repair crop" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-start space-x-4 mb-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-700 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">NJ</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-gray-900">Nilesh Joshi</h4>
+            <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Online</span>
+          </div>
+          <p class="text-sm text-purple-600 font-medium">Drip Irrigation Specialist</p>
+          <div class="flex items-center space-x-2 text-xs text-gray-400 mt-1">
+            <span>⭐ 4.9</span>
+            <span>•</span>
+            <span>8 yrs exp</span>
+            <span>•</span>
+            <span>145 installs</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-sm mb-4">Designs and installs drip & sprinkler irrigation for small/large farms. Saves up to 60% water usage.</p>
+      <div class="flex flex-wrap gap-1 mb-4">
+        <span class="expert-tag">💧 Drip Setup</span>
+        <span class="expert-tag">🌧 Sprinkler</span>
+        <span class="expert-tag">🔧 Repair</span>
+      </div>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div>
+          <span class="text-xl font-bold text-farm-700">₹400</span>
+          <span class="text-gray-400 text-xs">/visit</span>
+          <div class="text-xs text-green-600 font-medium">Free estimate</div>
+        </div>
+        <button onclick="openConsultModal('Nilesh Joshi', '400', 'Drip Irrigation Setup')" class="book-btn">Book Now</button>
+      </div>
+    </div>
+
+    <!-- Expert 6 - Weather -->
+    <div class="expert-card" data-type="crop soil" data-aos="fade-up" data-aos-delay="160">
+      <div class="flex items-start space-x-4 mb-4">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">KD</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-gray-900">Dr. Kavita Desai</h4>
+            <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Online</span>
+          </div>
+          <p class="text-sm text-purple-600 font-medium">Agri-Meteorologist</p>
+          <div class="flex items-center space-x-2 text-xs text-gray-400 mt-1">
+            <span>⭐ 4.8</span>
+            <span>•</span>
+            <span>11 yrs exp</span>
+            <span>•</span>
+            <span>201 consults</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-sm mb-4">Provides seasonal weather-based crop calendar, sowing/harvesting timing, and climate risk assessment for farms.</p>
+      <div class="flex flex-wrap gap-1 mb-4">
+        <span class="expert-tag">🌦 Weather</span>
+        <span class="expert-tag">📅 Crop Calendar</span>
+        <span class="expert-tag">🌾 Sowing Guide</span>
+      </div>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div>
+          <span class="text-xl font-bold text-farm-700">₹180</span>
+          <span class="text-gray-400 text-xs">/30min</span>
+          <div class="text-xs text-green-600 font-medium">First session FREE</div>
+        </div>
+        <button onclick="openConsultModal('Dr. Kavita Desai', '180', 'Weather & Crop Calendar')" class="book-btn">Book Call</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Consultation Modal -->
+<div id="consult-modal" class="modal-overlay hidden">
+  <div class="modal-box max-w-md w-full mx-4">
+    <div class="modal-header">
+      <h3 class="text-xl font-bold text-gray-900">Book Consultation</h3>
+      <button onclick="closeConsultModal()" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+    </div>
+    <div class="p-5 space-y-4">
+      <div class="bg-purple-50 border border-purple-200 rounded-xl p-3 flex items-center space-x-3">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold" id="cm-avatar">RS</div>
+        <div>
+          <div class="font-semibold text-gray-900 text-sm" id="cm-name">Dr. Ramesh Shah</div>
+          <div class="text-xs text-gray-500" id="cm-spec">Soil Testing</div>
+          <div class="text-green-600 font-bold text-sm">First session FREE 🎁</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="modal-label">Preferred Date</label>
+          <input type="date" id="cm-date" class="modal-input">
+        </div>
+        <div>
+          <label class="modal-label">Time Slot</label>
+          <select class="modal-input">
+            <option>9:00 AM</option>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>2:00 PM</option>
+            <option>3:00 PM</option>
+            <option>4:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="modal-label">Consultation Mode</label>
+        <div class="grid grid-cols-2 gap-2">
+          <label class="payment-option"><input type="radio" name="mode" value="call" class="hidden" checked><span class="payment-label active-payment">📞 Phone Call</span></label>
+          <label class="payment-option"><input type="radio" name="mode" value="video" class="hidden"><span class="payment-label">📹 Video Call</span></label>
+        </div>
+      </div>
+      <div>
+        <label class="modal-label">Your Question / Issue</label>
+        <textarea placeholder="Describe your crop problem, soil condition, or what advice you need..." rows="3" class="modal-input resize-none"></textarea>
+      </div>
+      <div>
+        <label class="modal-label">Your Mobile</label>
+        <input type="tel" placeholder="+91 98765 43210" class="modal-input">
+      </div>
+    </div>
+    <div class="px-5 pb-5">
+      <button onclick="confirmConsult()" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg">
+        ✅ Schedule Consultation
+      </button>
+      <p class="text-green-600 text-xs text-center mt-2 font-medium">🎁 First 30-minute session is completely free!</p>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+  function filterExpert(type, btn) {
+    document.querySelectorAll('.expert-tab').forEach(b => b.classList.remove('active-expert-tab'));
+    btn.classList.add('active-expert-tab');
+    document.querySelectorAll('.expert-card').forEach(card => {
+      const t = card.dataset.type || '';
+      card.classList.toggle('hidden', type !== 'all' && !t.includes(type));
+    });
+  }
+
+  function openConsultModal(name, price, spec) {
+    document.getElementById('cm-name').textContent = name;
+    document.getElementById('cm-spec').textContent = spec;
+    document.getElementById('cm-avatar').textContent = name.replace('Dr. ', '').split(' ').map(w => w[0]).join('').slice(0, 2);
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('cm-date').value = today;
+    document.getElementById('cm-date').min = today;
+    document.getElementById('consult-modal').classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeConsultModal() {
+    document.getElementById('consult-modal').classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function confirmConsult() {
+    closeConsultModal();
+    showToast('Consultation Booked!', 'Expert will call you at the selected time.', '📞');
+  }
+
+  document.querySelectorAll('input[name="mode"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.querySelectorAll('.payment-label').forEach(l => l.classList.remove('active-payment'));
+      r.nextElementSibling.classList.add('active-payment');
+    });
+  });
+
+  document.getElementById('consult-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeConsultModal();
+  });
+</script>
