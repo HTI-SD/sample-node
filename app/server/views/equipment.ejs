@@ -1,0 +1,459 @@
+<%- include('partials/header', { title: 'Equipment Rental – FarmSeva', activePage: 'equipment' }) %>
+
+<!-- Page Header -->
+<div class="bg-gradient-to-r from-farm-800 to-farm-600 py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center space-x-2 text-farm-300 text-sm mb-3">
+      <a href="/" class="hover:text-white transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-white">Equipment Rental</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">🚜 Equipment Rental</h1>
+    <p class="text-farm-200">Rent top-quality farm machinery by the day. No deposit. Cash payment accepted.</p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col lg:flex-row gap-7">
+
+    <!-- Sidebar Filters -->
+    <aside class="lg:w-72 flex-shrink-0">
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-20">
+        <h3 class="font-bold text-gray-900 mb-5 flex items-center justify-between">
+          <span>🔍 Filters</span>
+          <button onclick="clearFilters()" class="text-farm-600 text-xs font-medium hover:underline">Clear all</button>
+        </h3>
+
+        <!-- Location -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-gray-700 mb-2">📍 Location</label>
+          <input type="text" id="filter-location" placeholder="Enter village/city..."
+            class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:border-farm-400 focus:ring-2 focus:ring-farm-100 outline-none transition-all"
+            onkeyup="filterEquipment()">
+        </div>
+
+        <!-- Category -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-gray-700 mb-3">🗂 Category</label>
+          <div class="space-y-2">
+            <label class="filter-checkbox"><input type="checkbox" value="tractor" onchange="filterEquipment()" class="mr-2 accent-farm-600"><span>🚜 Tractor</span></label>
+            <label class="filter-checkbox"><input type="checkbox" value="harvester" onchange="filterEquipment()" class="mr-2 accent-farm-600"><span>🌾 Harvester</span></label>
+            <label class="filter-checkbox"><input type="checkbox" value="drone" onchange="filterEquipment()" class="mr-2 accent-farm-600"><span>🚁 Drone</span></label>
+            <label class="filter-checkbox"><input type="checkbox" value="tiller" onchange="filterEquipment()" class="mr-2 accent-farm-600"><span>⚙️ Tiller / Rotavator</span></label>
+            <label class="filter-checkbox"><input type="checkbox" value="sprayer" onchange="filterEquipment()" class="mr-2 accent-farm-600"><span>💧 Sprayer</span></label>
+            <label class="filter-checkbox"><input type="checkbox" value="seeder" onchange="filterEquipment()" class="mr-2 accent-farm-600"><span>🌱 Seed Drill</span></label>
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-gray-700 mb-2">💰 Max Price/Day</label>
+          <input type="range" id="price-range" min="300" max="3000" value="3000" step="100"
+            class="w-full accent-farm-600" onchange="updatePriceLabel(); filterEquipment()">
+          <div class="flex justify-between text-xs text-gray-500 mt-1">
+            <span>₹300</span>
+            <span class="text-farm-600 font-semibold" id="price-label">₹3,000</span>
+            <span>₹3,000</span>
+          </div>
+        </div>
+
+        <!-- Availability -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">📅 Availability</label>
+          <select id="filter-avail" onchange="filterEquipment()" class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:border-farm-400 outline-none transition-all">
+            <option value="">Any time</option>
+            <option value="today">Available Today</option>
+            <option value="week">This Week</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <!-- Sort & Count bar -->
+      <div class="flex flex-wrap items-center justify-between mb-5 gap-3">
+        <div>
+          <span class="text-gray-700 font-semibold" id="result-count">12 equipments</span>
+          <span class="text-gray-400 text-sm ml-1">available near you</span>
+        </div>
+        <select class="border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-600 focus:border-farm-400 outline-none">
+          <option>Sort: Recommended</option>
+          <option>Price: Low to High</option>
+          <option>Rating: High to Low</option>
+          <option>Distance: Nearest</option>
+        </select>
+      </div>
+
+      <!-- Equipment Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5" id="equipment-grid">
+
+        <!-- Item 1 -->
+        <div class="equip-card" data-category="tractor" data-price="800" data-location="anand">
+          <div class="equip-img-wrapper bg-amber-50">
+            <span class="text-7xl">🚜</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="font-bold text-gray-900">Mahindra Tractor 45HP</h4>
+              <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">Popular</span>
+            </div>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Anand, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.9 (87 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">4WD • AC Cabin • With Operator</div>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xl font-bold text-farm-700">₹800</span>
+                <span class="text-gray-400 text-xs">/day</span>
+              </div>
+              <button onclick="openBookingModal('Mahindra Tractor 45HP', '800')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="equip-card" data-category="harvester" data-price="2500" data-location="rajkot">
+          <div class="equip-img-wrapper bg-farm-50">
+            <span class="text-7xl">🌾</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="font-bold text-gray-900">Combine Harvester</h4>
+              <span class="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-medium">In Demand</span>
+            </div>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Rajkot, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.8 (52 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">8ft Cutting • Wheat/Rice/Soybean</div>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xl font-bold text-farm-700">₹2,500</span>
+                <span class="text-gray-400 text-xs">/day</span>
+              </div>
+              <button onclick="openBookingModal('Combine Harvester', '2500')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="equip-card" data-category="drone" data-price="1200" data-location="vadodara">
+          <div class="equip-img-wrapper bg-blue-50">
+            <span class="text-7xl">🚁</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <div class="flex justify-between items-start mb-1">
+              <h4 class="font-bold text-gray-900">Agri Drone Sprayer</h4>
+              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">New</span>
+            </div>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Vadodara, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.9 (31 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">10L Tank • 2 Acre/Charge • GPS</div>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xl font-bold text-farm-700">₹1,200</span>
+                <span class="text-gray-400 text-xs">/day</span>
+              </div>
+              <button onclick="openBookingModal('Agri Drone Sprayer', '1200')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="equip-card" data-category="tiller" data-price="400" data-location="surat">
+          <div class="equip-img-wrapper bg-orange-50">
+            <span class="text-7xl">⚙️</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <h4 class="font-bold text-gray-900 mb-1">Rotavator 7 Feet</h4>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Surat, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.7 (44 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">42 Blades • 3 Point Linkage</div>
+            <div class="flex items-center justify-between">
+              <div><span class="text-xl font-bold text-farm-700">₹400</span><span class="text-gray-400 text-xs">/day</span></div>
+              <button onclick="openBookingModal('Rotavator 7 Feet', '400')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="equip-card" data-category="seeder" data-price="300" data-location="ahmedabad">
+          <div class="equip-img-wrapper bg-green-50">
+            <span class="text-7xl">🌱</span>
+            <div class="avail-badge bg-yellow-100 text-yellow-700">⏳ From Tomorrow</div>
+          </div>
+          <div class="equip-body">
+            <h4 class="font-bold text-gray-900 mb-1">Seed Drill (9 Row)</h4>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Ahmedabad, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.6 (28 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">Wheat, Soybean, Chickpea</div>
+            <div class="flex items-center justify-between">
+              <div><span class="text-xl font-bold text-farm-700">₹300</span><span class="text-gray-400 text-xs">/day</span></div>
+              <button onclick="openBookingModal('Seed Drill (9 Row)', '300')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="equip-card" data-category="tractor" data-price="950" data-location="mehsana">
+          <div class="equip-img-wrapper bg-purple-50">
+            <span class="text-7xl">🚜</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <h4 class="font-bold text-gray-900 mb-1">Sonalika DI 60 RX</h4>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Mehsana, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.8 (63 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">60HP • Power Steering • With Loader</div>
+            <div class="flex items-center justify-between">
+              <div><span class="text-xl font-bold text-farm-700">₹950</span><span class="text-gray-400 text-xs">/day</span></div>
+              <button onclick="openBookingModal('Sonalika DI 60 RX', '950')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="equip-card" data-category="sprayer" data-price="350" data-location="navsari">
+          <div class="equip-img-wrapper bg-teal-50">
+            <span class="text-7xl">💧</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <h4 class="font-bold text-gray-900 mb-1">Power Sprayer 500L</h4>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Navsari, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.5 (19 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">Boom Sprayer • 5 Acre/Day</div>
+            <div class="flex items-center justify-between">
+              <div><span class="text-xl font-bold text-farm-700">₹350</span><span class="text-gray-400 text-xs">/day</span></div>
+              <button onclick="openBookingModal('Power Sprayer 500L', '350')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="equip-card" data-category="tiller" data-price="500" data-location="bhavnagar">
+          <div class="equip-img-wrapper bg-rose-50">
+            <span class="text-7xl">⚙️</span>
+            <div class="avail-badge bg-green-100 text-green-700">✓ Available Today</div>
+          </div>
+          <div class="equip-body">
+            <h4 class="font-bold text-gray-900 mb-1">Power Tiller 12HP</h4>
+            <div class="flex items-center space-x-1 text-xs text-gray-400 mb-2">
+              <span>📍 Bhavnagar, Gujarat</span>
+              <span>•</span>
+              <span>⭐ 4.7 (37 bookings)</span>
+            </div>
+            <div class="text-xs text-gray-500 mb-3">Rice/Vegetable Fields • Easy Handle</div>
+            <div class="flex items-center justify-between">
+              <div><span class="text-xl font-bold text-farm-700">₹500</span><span class="text-gray-400 text-xs">/day</span></div>
+              <button onclick="openBookingModal('Power Tiller 12HP', '500')" class="book-btn">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 9 – list your own equipment -->
+        <div class="equip-card bg-gradient-to-br from-farm-50 to-farm-100 border-2 border-dashed border-farm-300 flex flex-col items-center justify-center py-10 text-center cursor-pointer hover:border-farm-500 transition-all group">
+          <div class="text-5xl mb-3 group-hover:scale-110 transition-transform">➕</div>
+          <h4 class="font-bold text-farm-700 mb-1">List Your Equipment</h4>
+          <p class="text-farm-600 text-xs max-w-[160px]">Earn money by renting out your idle machinery</p>
+          <button class="mt-4 bg-farm-600 text-white text-xs px-4 py-2 rounded-full font-semibold hover:bg-farm-700 transition-colors">Become a Provider</button>
+        </div>
+      </div>
+
+      <!-- No results message (hidden) -->
+      <div id="no-results" class="hidden text-center py-16">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-xl font-bold text-gray-700 mb-2">No equipment found</h3>
+        <p class="text-gray-400">Try adjusting your filters or location</p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ===== BOOKING MODAL ===== -->
+<div id="booking-modal" class="modal-overlay hidden">
+  <div class="modal-box max-w-md w-full mx-4">
+    <div class="modal-header">
+      <h3 class="text-xl font-bold text-gray-900" id="modal-title">Book Equipment</h3>
+      <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+    </div>
+
+    <div class="p-5 space-y-4">
+      <!-- Equipment name -->
+      <div class="bg-farm-50 border border-farm-200 rounded-xl p-3 flex items-center space-x-3">
+        <span class="text-3xl">🚜</span>
+        <div>
+          <div class="font-semibold text-gray-900 text-sm" id="modal-equip-name">Mahindra Tractor</div>
+          <div class="text-farm-600 font-bold" id="modal-equip-price">₹800/day</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="modal-label">Start Date</label>
+          <input type="date" id="book-start" class="modal-input" min="">
+        </div>
+        <div>
+          <label class="modal-label">No. of Days</label>
+          <select id="book-days" class="modal-input" onchange="updateTotal()">
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3">3 Days</option>
+            <option value="5">5 Days</option>
+            <option value="7">7 Days</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="modal-label">Your Name</label>
+        <input type="text" placeholder="Ramesh Patel" class="modal-input">
+      </div>
+      <div>
+        <label class="modal-label">Mobile Number</label>
+        <input type="tel" placeholder="+91 98765 43210" class="modal-input">
+      </div>
+      <div>
+        <label class="modal-label">Village / Farm Location</label>
+        <input type="text" placeholder="Village name, Taluka" class="modal-input">
+      </div>
+
+      <div>
+        <label class="modal-label">Payment Method</label>
+        <div class="grid grid-cols-3 gap-2">
+          <label class="payment-option"><input type="radio" name="payment" value="cash" class="hidden" checked><span class="payment-label active-payment" id="pay-cash">💵 Cash</span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="upi" class="hidden"><span class="payment-label" id="pay-upi">📱 UPI</span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="card" class="hidden"><span class="payment-label" id="pay-card">💳 Card</span></label>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="bg-gray-50 rounded-xl p-3 flex justify-between items-center border border-gray-200">
+        <span class="text-gray-600 text-sm font-medium">Total Amount</span>
+        <span class="text-xl font-bold text-farm-700" id="modal-total">₹800</span>
+      </div>
+    </div>
+
+    <div class="px-5 pb-5">
+      <button onclick="confirmBooking()" class="w-full bg-gradient-to-r from-farm-600 to-farm-700 hover:from-farm-700 hover:to-farm-800 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg active:scale-[.99]">
+        ✅ Confirm Booking
+      </button>
+      <p class="text-gray-400 text-xs text-center mt-2">No advance payment needed. Pay on arrival.</p>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+  let currentPrice = 800;
+
+  function openBookingModal(name, price) {
+    currentPrice = parseInt(price);
+    document.getElementById('modal-equip-name').textContent = name;
+    document.getElementById('modal-equip-price').textContent = '₹' + parseInt(price).toLocaleString('en-IN') + '/day';
+    document.getElementById('modal-total').textContent = '₹' + parseInt(price).toLocaleString('en-IN');
+    // Set min date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('book-start').min = today;
+    document.getElementById('book-start').value = today;
+    document.getElementById('booking-modal').classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeBookingModal() {
+    document.getElementById('booking-modal').classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function updateTotal() {
+    const days = parseInt(document.getElementById('book-days').value);
+    document.getElementById('modal-total').textContent = '₹' + (currentPrice * days).toLocaleString('en-IN');
+  }
+
+  function confirmBooking() {
+    closeBookingModal();
+    showToast('Booking Confirmed! 🎉', 'You will receive an SMS confirmation shortly.', '✅');
+  }
+
+  // Payment option toggle
+  document.querySelectorAll('input[name="payment"]').forEach(input => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll('.payment-label').forEach(l => l.classList.remove('active-payment'));
+      input.nextElementSibling.classList.add('active-payment');
+    });
+  });
+
+  // Close modal on overlay click
+  document.getElementById('booking-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeBookingModal();
+  });
+
+  // Filter logic
+  function filterEquipment() {
+    const location = document.getElementById('filter-location').value.toLowerCase();
+    const maxPrice = parseInt(document.getElementById('price-range').value);
+    const checkedCats = [...document.querySelectorAll('input[type=checkbox]:checked')].map(c => c.value);
+    const avail = document.getElementById('filter-avail').value;
+
+    const cards = document.querySelectorAll('.equip-card[data-category]');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const cardPrice = parseInt(card.dataset.price);
+      const cardLocation = (card.dataset.location || '').toLowerCase();
+      const cardCat = card.dataset.category;
+
+      const priceOk = cardPrice <= maxPrice;
+      const locationOk = !location || cardLocation.includes(location);
+      const catOk = checkedCats.length === 0 || checkedCats.includes(cardCat);
+
+      if (priceOk && locationOk && catOk) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('result-count').textContent = visible + ' equipment' + (visible !== 1 ? 's' : '');
+    document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+  }
+
+  function updatePriceLabel() {
+    const v = parseInt(document.getElementById('price-range').value);
+    document.getElementById('price-label').textContent = '₹' + v.toLocaleString('en-IN');
+  }
+
+  function clearFilters() {
+    document.getElementById('filter-location').value = '';
+    document.getElementById('price-range').value = 3000;
+    document.getElementById('filter-avail').value = '';
+    document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+    updatePriceLabel();
+    filterEquipment();
+  }
+</script>

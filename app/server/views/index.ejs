@@ -1,9 +1,488 @@
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="styles/styles.css" />
-        <title>Sample Node.js Application</title>
-    </head>
-    <body>
-    <span>Sample Node.js Application</span>
-    </body>
-</html>
+<%- include('partials/header', { title: 'FarmSeva – Farming Made Easy', activePage: 'home' }) %>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-farm-900 via-farm-800 to-farm-700">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\");"></div>
+  </div>
+
+  <!-- Floating decorative elements -->
+  <div class="absolute top-20 right-20 w-64 h-64 bg-farm-600/30 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-20 left-10 w-80 h-80 bg-soil-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay:1.5s"></div>
+  <div class="absolute top-1/2 left-1/3 w-40 h-40 bg-farm-500/20 rounded-full blur-2xl animate-float"></div>
+
+  <!-- Floating emojis -->
+  <div class="absolute top-24 left-[8%] text-5xl animate-float opacity-60">🌾</div>
+  <div class="absolute top-40 right-[12%] text-4xl animate-float opacity-50" style="animation-delay:1s">🚜</div>
+  <div class="absolute bottom-32 right-[8%] text-4xl animate-float opacity-50" style="animation-delay:2s">🌱</div>
+  <div class="absolute bottom-40 left-[15%] text-3xl animate-float opacity-40" style="animation-delay:0.5s">☀️</div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Left content -->
+    <div class="text-white space-y-7">
+      <div class="inline-flex items-center space-x-2 bg-farm-700/60 border border-farm-500/40 rounded-full px-4 py-1.5">
+        <span class="w-2 h-2 bg-soil-400 rounded-full animate-pulse"></span>
+        <span class="text-soil-300 text-sm font-medium">Now in 12 States · 5,200+ Farmers Served</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        <span class="text-white">खेती को</span><br>
+        <span class="text-soil-400">आसान बनाएं</span><br>
+        <span class="text-farm-200 text-3xl sm:text-4xl font-semibold">with FarmSeva</span>
+      </h1>
+
+      <p class="text-farm-100 text-lg leading-relaxed max-w-xl" data-translate="hero-subtitle">
+        India's first on-demand platform for farmers — rent equipment, book skilled workers, consult experts, and detect crop diseases with AI. <strong class="text-white">No middlemen. Fair prices.</strong>
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="/equipment" class="group flex items-center space-x-2 bg-soil-500 hover:bg-soil-400 text-farm-900 font-bold px-7 py-3.5 rounded-2xl transition-all shadow-lg hover:shadow-soil-500/40 hover:-translate-y-1">
+          <span>🚜</span>
+          <span data-translate="hero-cta-1">Book a Service</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/disease" class="flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-7 py-3.5 rounded-2xl transition-all backdrop-blur-sm">
+          <span>🔬</span>
+          <span data-translate="hero-cta-2">Detect Disease</span>
+        </a>
+      </div>
+
+      <!-- Voice note -->
+      <div class="flex items-center space-x-3 text-farm-300 text-sm">
+        <div class="flex items-center space-x-1 bg-farm-700/40 rounded-full px-3 py-1.5 border border-farm-600/30">
+          <span data-translate="hero-voice">🎙 Voice Support: हिंदी, ગુજ, मराठी</span>
+        </div>
+        <div class="flex items-center space-x-1 bg-farm-700/40 rounded-full px-3 py-1.5 border border-farm-600/30">
+          <span data-translate="hero-offline">📵 Works Offline</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Service quick-access cards -->
+    <div class="hidden lg:grid grid-cols-2 gap-4">
+      <a href="/equipment" class="hero-card group">
+        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🚜</div>
+        <div class="font-semibold text-white">Equipment Rental</div>
+        <div class="text-farm-300 text-xs mt-1">Tractor, Drone & more</div>
+        <div class="mt-3 text-soil-400 text-xs font-medium">From ₹300/day →</div>
+      </a>
+      <a href="/labour" class="hero-card group mt-6">
+        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">👨‍🌾</div>
+        <div class="font-semibold text-white">Skilled Labour</div>
+        <div class="text-farm-300 text-xs mt-1">Sowing, Harvesting &amp; more</div>
+        <div class="mt-3 text-soil-400 text-xs font-medium">From ₹350/day →</div>
+      </a>
+      <a href="/consultation" class="hero-card group -mt-6">
+        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">👨‍💼</div>
+        <div class="font-semibold text-white">Expert Consult</div>
+        <div class="text-farm-300 text-xs mt-1">Soil, Crop &amp; Agri experts</div>
+        <div class="mt-3 text-soil-400 text-xs font-medium">Free first session →</div>
+      </a>
+      <a href="/disease" class="hero-card group">
+        <div class="text-4xl mb-3 group-hover:scale-110 transition-transform">🔬</div>
+        <div class="font-semibold text-white">Disease AI</div>
+        <div class="text-farm-300 text-xs mt-1">Photo → Instant diagnosis</div>
+        <div class="mt-3 text-soil-400 text-xs font-medium">Try free →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+      <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z" fill="#f9fafb"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="bg-gray-50 py-8 -mt-1">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="stat-number" data-target="5200">0</div>
+        <div class="stat-label">Farmers Served</div>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-number" data-target="340">0</div>
+        <div class="stat-label">Service Providers</div>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-number" data-target="12">0</div>
+        <div class="stat-label">States Covered</div>
+      </div>
+      <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-number" data-target="98">0</div>
+        <div class="stat-label">% Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES SECTION ===== -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="text-farm-600 font-semibold text-sm uppercase tracking-widest" data-translate="services-label">What We Offer</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4" data-translate="services-title">सभी सेवाएं एक जगह</h2>
+      <p class="text-gray-500 max-w-xl mx-auto" data-translate="services-desc">Everything a farmer needs — from equipment to experts — available on-demand, right from your phone.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Equipment Rental -->
+      <a href="/equipment" data-aos="fade-up" data-aos-delay="0" class="service-card group">
+        <div class="service-icon-wrapper bg-amber-50 group-hover:bg-amber-100">
+          <span class="text-4xl">🚜</span>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Equipment Rental</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Rent tractors, harvesters, drones, and small tools by the day. No ownership needed.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-farm-600 font-semibold text-sm">From ₹300/day</span>
+          <span class="text-gray-400 group-hover:text-farm-600 transition-colors">→</span>
+        </div>
+        <div class="service-tags">
+          <span class="tag">Tractor</span><span class="tag">Drone</span><span class="tag">Harvester</span>
+        </div>
+      </a>
+
+      <!-- Labour Booking -->
+      <a href="/labour" data-aos="fade-up" data-aos-delay="80" class="service-card group">
+        <div class="service-icon-wrapper bg-blue-50 group-hover:bg-blue-100">
+          <span class="text-4xl">👨‍🌾</span>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Skilled Labour</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Book verified daily workers for sowing, harvesting, irrigation setup and more.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-farm-600 font-semibold text-sm">From ₹350/day</span>
+          <span class="text-gray-400 group-hover:text-farm-600 transition-colors">→</span>
+        </div>
+        <div class="service-tags">
+          <span class="tag">Sowing</span><span class="tag">Harvesting</span><span class="tag">Irrigation</span>
+        </div>
+      </a>
+
+      <!-- Expert Consultation -->
+      <a href="/consultation" data-aos="fade-up" data-aos-delay="160" class="service-card group">
+        <div class="service-icon-wrapper bg-purple-50 group-hover:bg-purple-100">
+          <span class="text-4xl">👨‍💼</span>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Expert Consultation</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Get advice from soil scientists, crop experts, and organic farming specialists.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-farm-600 font-semibold text-sm">First session free</span>
+          <span class="text-gray-400 group-hover:text-farm-600 transition-colors">→</span>
+        </div>
+        <div class="service-tags">
+          <span class="tag">Soil Test</span><span class="tag">Organic</span><span class="tag">Crop Advisory</span>
+        </div>
+      </a>
+
+      <!-- Disease AI -->
+      <a href="/disease" data-aos="fade-up" data-aos-delay="0" class="service-card group border-2 border-farm-200">
+        <div class="service-icon-wrapper bg-green-50 group-hover:bg-green-100">
+          <span class="text-4xl">🔬</span>
+        </div>
+        <div class="flex items-center space-x-2 mb-2">
+          <h3 class="text-lg font-bold text-gray-900">Disease Detection</h3>
+          <span class="bg-farm-600 text-white text-xs px-2 py-0.5 rounded-full font-semibold">AI</span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed">Upload a photo of your crop and get instant AI-powered disease diagnosis + treatment plan.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-farm-600 font-semibold text-sm">Try free →</span>
+          <span class="text-gray-400 group-hover:text-farm-600 transition-colors">→</span>
+        </div>
+        <div class="service-tags">
+          <span class="tag tag-green">AI Powered</span><span class="tag">Photo Upload</span>
+        </div>
+      </a>
+
+      <!-- Repair & Maintenance -->
+      <a href="/consultation" data-aos="fade-up" data-aos-delay="80" class="service-card group">
+        <div class="service-icon-wrapper bg-red-50 group-hover:bg-red-100">
+          <span class="text-4xl">🔧</span>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Repair & Maintenance</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Emergency repair for pumps, tractors, drip irrigation. Fast response in your village.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-red-500 font-semibold text-sm">Emergency Available</span>
+          <span class="text-gray-400 group-hover:text-farm-600 transition-colors">→</span>
+        </div>
+        <div class="service-tags">
+          <span class="tag">Pump Repair</span><span class="tag">Tractor</span><span class="tag">Drip</span>
+        </div>
+      </a>
+
+      <!-- Group Booking -->
+      <a href="/group-booking" data-aos="fade-up" data-aos-delay="160" class="service-card group bg-gradient-to-br from-farm-50 to-soil-50">
+        <div class="service-icon-wrapper bg-soil-50 group-hover:bg-soil-100">
+          <span class="text-4xl">👥</span>
+        </div>
+        <div class="flex items-center space-x-2 mb-2">
+          <h3 class="text-lg font-bold text-gray-900">Group Booking</h3>
+          <span class="bg-soil-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold">Save 40%</span>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed">Join 4 other farmers to share one tractor. Split costs. Everyone saves more together.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="text-soil-600 font-semibold text-sm">Split costs →</span>
+          <span class="text-gray-400 group-hover:text-farm-600 transition-colors">→</span>
+        </div>
+        <div class="service-tags">
+          <span class="tag tag-amber">New</span><span class="tag">Group of 5</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="py-20 bg-gradient-to-br from-farm-50 to-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="text-farm-600 font-semibold text-sm uppercase tracking-widest" data-translate="how-label">Simple Process</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4" data-translate="how-title">कैसे काम करता है?</h2>
+      <p class="text-gray-500 max-w-lg mx-auto" data-translate="how-desc">Book any service in under 2 minutes — even with basic internet or SMS.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+      <!-- Connector line (desktop) -->
+      <div class="hidden md:block absolute top-10 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-farm-200 via-soil-300 to-farm-200"></div>
+
+      <div class="how-step" data-aos="fade-up" data-aos-delay="0">
+        <div class="how-step-num">1</div>
+        <div class="text-5xl mb-4">📍</div>
+        <h4 class="font-bold text-gray-900 mb-2">Choose Service</h4>
+        <p class="text-gray-500 text-sm">Pick from Equipment, Labour, Expert, or Repair.</p>
+      </div>
+      <div class="how-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="how-step-num">2</div>
+        <div class="text-5xl mb-4">📅</div>
+        <h4 class="font-bold text-gray-900 mb-2">Pick Date & Time</h4>
+        <p class="text-gray-500 text-sm">Select when you need it. Same-day booking available.</p>
+      </div>
+      <div class="how-step" data-aos="fade-up" data-aos-delay="200">
+        <div class="how-step-num">3</div>
+        <div class="text-5xl mb-4">💳</div>
+        <h4 class="font-bold text-gray-900 mb-2">Pay Your Way</h4>
+        <p class="text-gray-500 text-sm">Cash on delivery, UPI, or credit. No card required.</p>
+      </div>
+      <div class="how-step" data-aos="fade-up" data-aos-delay="300">
+        <div class="how-step-num">4</div>
+        <div class="text-5xl mb-4">✅</div>
+        <h4 class="font-bold text-gray-900 mb-2">Service at Farm</h4>
+        <p class="text-gray-500 text-sm">Verified provider arrives at your farm on time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI FEATURE PROMO ===== -->
+<section class="py-20 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Visual -->
+      <div class="relative" data-aos="fade-right">
+        <div class="bg-gradient-to-br from-farm-900 to-farm-700 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-farm-600/30 rounded-full blur-2xl"></div>
+
+          <!-- Mock phone interface -->
+          <div class="bg-farm-800/50 rounded-2xl p-4 border border-farm-600/30">
+            <div class="flex items-center space-x-2 mb-4">
+              <div class="w-8 h-8 bg-farm-600 rounded-lg flex items-center justify-center text-sm">🔬</div>
+              <span class="text-white font-semibold text-sm">FarmSeva AI Analysis</span>
+              <span class="ml-auto bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">Live</span>
+            </div>
+
+            <!-- Fake image upload box -->
+            <div class="bg-farm-700/60 rounded-xl p-6 mb-4 text-center border-2 border-dashed border-farm-500/40">
+              <div class="text-5xl mb-2">🌿</div>
+              <p class="text-farm-300 text-xs">Tomato leaf (uploaded)</p>
+            </div>
+
+            <!-- Results -->
+            <div class="bg-red-500/20 border border-red-400/30 rounded-xl p-3 mb-3">
+              <div class="flex items-center space-x-2 mb-1">
+                <span class="text-red-400 font-bold text-sm">⚠️ Late Blight Detected</span>
+                <span class="ml-auto text-red-300 text-xs">94% confidence</span>
+              </div>
+              <p class="text-red-200 text-xs">Phytophthora infestans fungal infection</p>
+            </div>
+            <div class="bg-farm-700/60 rounded-xl p-3">
+              <p class="text-farm-300 text-xs font-semibold mb-1">💊 Recommended Treatment</p>
+              <p class="text-farm-200 text-xs">Apply Mancozeb 75% WP @ 2g/liter every 7 days. Remove infected leaves immediately.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Badge -->
+        <div class="absolute -bottom-4 -right-4 bg-soil-500 text-white rounded-2xl px-5 py-3 shadow-xl text-sm font-bold">
+          ✨ AI-Powered
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div data-aos="fade-left">
+        <span class="text-farm-600 font-semibold text-sm uppercase tracking-widest">New Feature</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">
+          फसल बीमारी पहचानें<br>
+          <span class="text-farm-600">सेकंडों में</span>
+        </h2>
+        <p class="text-gray-500 text-lg mb-6">Just take a photo of your sick plant and our AI will instantly identify the disease and suggest treatments. No expert visit needed for initial diagnosis.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start space-x-3">
+            <span class="w-6 h-6 bg-farm-100 rounded-full flex items-center justify-center text-farm-600 flex-shrink-0 mt-0.5">✓</span>
+            <span class="text-gray-600">Supports 50+ common crop diseases</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="w-6 h-6 bg-farm-100 rounded-full flex items-center justify-center text-farm-600 flex-shrink-0 mt-0.5">✓</span>
+            <span class="text-gray-600">Works offline after initial download</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="w-6 h-6 bg-farm-100 rounded-full flex items-center justify-center text-farm-600 flex-shrink-0 mt-0.5">✓</span>
+            <span class="text-gray-600">Results in Hindi, Gujarati, Marathi</span>
+          </li>
+          <li class="flex items-start space-x-3">
+            <span class="w-6 h-6 bg-farm-100 rounded-full flex items-center justify-center text-farm-600 flex-shrink-0 mt-0.5">✓</span>
+            <span class="text-gray-600">Connect with a local expert in 1-click</span>
+          </li>
+        </ul>
+        <a href="/disease" class="inline-flex items-center space-x-2 bg-farm-600 hover:bg-farm-700 text-white font-semibold px-7 py-3.5 rounded-2xl transition-all shadow-lg hover:-translate-y-1">
+          <span>🔬</span>
+          <span>Try Disease Detection Free</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY FARMSEVA ===== -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="text-farm-600 font-semibold text-sm uppercase tracking-widest">Why Us</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">गरीब किसान की जीत</h2>
+      <p class="text-gray-500 max-w-xl mx-auto">FarmSeva is built specifically for small and marginal farmers who can't afford expensive equipment.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="0">
+        <div class="text-4xl mb-4">❌💰</div>
+        <h4 class="font-bold text-gray-900 mb-2">No Big Investment</h4>
+        <p class="text-gray-500 text-sm">Rent a ₹20 lakh tractor for just ₹800/day. No loan, no EMI.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="text-4xl mb-4">⏱️</div>
+        <h4 class="font-bold text-gray-900 mb-2">Save Hours Daily</h4>
+        <p class="text-gray-500 text-sm">Find labour and equipment in minutes, not days of searching.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="text-4xl mb-4">🛡️</div>
+        <h4 class="font-bold text-gray-900 mb-2">Fair & Transparent</h4>
+        <p class="text-gray-500 text-sm">Fixed prices listed upfront. No middleman exploitation. Cash accepted.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="text-4xl mb-4">📈</div>
+        <h4 class="font-bold text-gray-900 mb-2">Better Harvest</h4>
+        <p class="text-gray-500 text-sm">Expert advice + right equipment = higher crop yield and income.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="text-farm-600 font-semibold text-sm uppercase tracking-widest" data-translate="testi-label">Farmer Stories</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2" data-translate="testi-title">किसानों की बात</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-start space-x-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-2xl flex-shrink-0">👨‍🌾</div>
+          <div>
+            <div class="font-bold text-gray-900">Ramesh Patel</div>
+            <div class="text-gray-400 text-xs">Wheat Farmer • Anand, Gujarat</div>
+            <div class="flex text-soil-500 text-xs mt-1">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic">"FarmSeva se mujhe 2 ghante mein tractor mil gaya. Pehle 3 din lagta tha dhundhne mein. Bahut achha service hai!"</p>
+        <div class="mt-4 text-farm-600 text-xs font-medium">🚜 Used Equipment Rental</div>
+      </div>
+
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-start space-x-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl flex-shrink-0">👩‍🌾</div>
+          <div>
+            <div class="font-bold text-gray-900">Sunita Devi</div>
+            <div class="text-gray-400 text-xs">Vegetable Farmer • Pune, Maharashtra</div>
+            <div class="flex text-soil-500 text-xs mt-1">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic">"Meri tamatar ki fasal kharab ho rahi thi. FarmSeva AI ne photo dekh ke bata diya — Late Blight hai. Doctor ka ilaj kaam aaya. 80% fasal bach gayi!"</p>
+        <div class="mt-4 text-farm-600 text-xs font-medium">🔬 Used Disease AI Detection</div>
+      </div>
+
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-start space-x-4 mb-4">
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-2xl flex-shrink-0">🧑‍🌾</div>
+          <div>
+            <div class="font-bold text-gray-900">Harinder Singh</div>
+            <div class="text-gray-400 text-xs">Rice Farmer • Ludhiana, Punjab</div>
+            <div class="flex text-soil-500 text-xs mt-1">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic">"Group booking se hamare 5 kisan milke ek harvester book kiya. Har ek ko ₹2500 ki jagah sirf ₹600 dena pada. FarmSeva zindabad!"</p>
+        <div class="mt-4 text-farm-600 text-xs font-medium">👥 Used Group Booking</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="py-16 bg-gradient-to-r from-farm-700 to-farm-900 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-farm-400 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-soil-400 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-4 text-center" data-aos="zoom-in">
+    <div class="text-5xl mb-4">🌾</div>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-translate="cta-title">Ready to transform your farm?</h2>
+    <p class="text-farm-200 text-lg mb-8" data-translate="cta-desc">Join 5,200+ farmers already using FarmSeva. Book your first service today — no registration required.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="/equipment" class="bg-soil-500 hover:bg-soil-400 text-farm-900 font-bold px-8 py-4 rounded-2xl transition-all shadow-lg hover:-translate-y-1 text-lg">
+        <span data-translate="cta-btn1">🚜 Book Equipment Now</span>
+      </a>
+      <a href="/disease" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-2xl transition-all backdrop-blur-sm">
+        <span data-translate="cta-btn2">🔬 Try Disease AI Free</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+<script>
+  // Animated counter
+  function animateCounters() {
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'));
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.textContent = Math.round(current).toLocaleString('en-IN') + (el.getAttribute('data-target') === '98' ? '%' : '+');
+        if (current >= target) clearInterval(timer);
+      }, 25);
+    });
+  }
+
+  // Trigger counters when stat section is visible
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateCounters();
+      observer.disconnect();
+    }
+  }, { threshold: 0.3 });
+  observer.observe(document.querySelector('.stat-card'));
+</script>

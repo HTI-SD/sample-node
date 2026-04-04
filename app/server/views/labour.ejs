@@ -1,0 +1,381 @@
+<%- include('partials/header', { title: 'Skilled Labour Booking – FarmSeva', activePage: 'labour' }) %>
+
+<div class="bg-gradient-to-r from-blue-800 to-blue-600 py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center space-x-2 text-blue-300 text-sm mb-3">
+      <a href="/" class="hover:text-white transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-white">Labour Booking</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">👨‍🌾 Skilled Labour Booking</h1>
+    <p class="text-blue-200">Book verified, background-checked daily workers. Fair wages. No middlemen.</p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+  <!-- Skill category quick filter -->
+  <div class="flex flex-wrap gap-2 mb-7">
+    <button onclick="filterBySkill('all')" id="skill-all" class="skill-filter-btn active-skill-btn">All Workers</button>
+    <button onclick="filterBySkill('sowing')" class="skill-filter-btn">🌱 Sowing</button>
+    <button onclick="filterBySkill('harvesting')" class="skill-filter-btn">🌾 Harvesting</button>
+    <button onclick="filterBySkill('irrigation')" class="skill-filter-btn">💧 Irrigation</button>
+    <button onclick="filterBySkill('organic')" class="skill-filter-btn">🌿 Organic Farming</button>
+    <button onclick="filterBySkill('general')" class="skill-filter-btn">🔨 General Labour</button>
+    <button onclick="filterBySkill('pruning')" class="skill-filter-btn">✂️ Pruning</button>
+  </div>
+
+  <!-- Sort bar -->
+  <div class="flex flex-wrap items-center justify-between mb-5 gap-3">
+    <div>
+      <span class="text-gray-700 font-semibold" id="labour-count">14 workers</span>
+      <span class="text-gray-400 text-sm ml-1">available in your area</span>
+    </div>
+    <select class="border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-600 focus:border-farm-400 outline-none">
+      <option>Sort: Nearest First</option>
+      <option>Rating: High to Low</option>
+      <option>Price: Low to High</option>
+    </select>
+  </div>
+
+  <!-- Workers grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="labour-grid">
+
+    <!-- Worker 1 -->
+    <div class="worker-card" data-skill="harvesting sowing" data-aos="fade-up" data-aos-delay="0">
+      <div class="worker-header bg-gradient-to-br from-orange-400 to-orange-600">
+        <div class="worker-avatar">RP</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Rajesh Patel</h4>
+          <span class="text-xs text-gray-400">2.3 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.9</span>
+          <span class="text-gray-400">• 156 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌾 Harvesting</span>
+          <span class="worker-skill-tag">🌱 Sowing</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Anand • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹450</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Rajesh Patel', '450', 'Harvesting, Sowing')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 2 -->
+    <div class="worker-card" data-skill="organic sowing" data-aos="fade-up" data-aos-delay="60">
+      <div class="worker-header bg-gradient-to-br from-green-400 to-green-700">
+        <div class="worker-avatar">SD</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Sunita Devi</h4>
+          <span class="text-xs text-gray-400">1.1 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.8</span>
+          <span class="text-gray-400">• 89 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌿 Organic</span>
+          <span class="worker-skill-tag">🌱 Sowing</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Ahmedabad • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹400</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Sunita Devi', '400', 'Organic Farming, Sowing')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 3 -->
+    <div class="worker-card" data-skill="irrigation general" data-aos="fade-up" data-aos-delay="120">
+      <div class="worker-header bg-gradient-to-br from-blue-400 to-blue-700">
+        <div class="worker-avatar">MK</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Mohan Kumar</h4>
+          <span class="text-xs text-gray-400">3.5 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.7</span>
+          <span class="text-gray-400">• 201 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">💧 Irrigation</span>
+          <span class="worker-skill-tag">🔨 General</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Vadodara • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹500</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Mohan Kumar', '500', 'Irrigation Setup, General Labour')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 4 -->
+    <div class="worker-card" data-skill="sowing pruning" data-aos="fade-up" data-aos-delay="180">
+      <div class="worker-header bg-gradient-to-br from-pink-400 to-pink-600">
+        <div class="worker-avatar">PV</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Priya Verma</h4>
+          <span class="text-xs text-gray-400">0.8 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.9</span>
+          <span class="text-gray-400">• 67 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌱 Sowing</span>
+          <span class="worker-skill-tag">✂️ Pruning</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Surat • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹350</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Priya Verma', '350', 'Sowing, Pruning')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 5 -->
+    <div class="worker-card" data-skill="harvesting general" data-aos="fade-up" data-aos-delay="0">
+      <div class="worker-header bg-gradient-to-br from-teal-400 to-teal-700">
+        <div class="worker-avatar">AS</div>
+        <div class="worker-avail-dot bg-yellow-400"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Amita Singh</h4>
+          <span class="text-xs text-gray-400">4.2 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.6</span>
+          <span class="text-gray-400">• 114 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌾 Harvesting</span>
+          <span class="worker-skill-tag">🔨 General</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Rajkot • From Tomorrow</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹380</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Amita Singh', '380', 'Harvesting, General Labour')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 6 -->
+    <div class="worker-card" data-skill="organic irrigation" data-aos="fade-up" data-aos-delay="60">
+      <div class="worker-header bg-gradient-to-br from-emerald-400 to-emerald-700">
+        <div class="worker-avatar">BM</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Bhavesh Mehta</h4>
+          <span class="text-xs text-gray-400">5.1 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.8</span>
+          <span class="text-gray-400">• 78 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌿 Organic</span>
+          <span class="worker-skill-tag">💧 Irrigation</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Navsari • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹420</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Bhavesh Mehta', '420', 'Organic Farming, Irrigation')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 7 -->
+    <div class="worker-card" data-skill="sowing harvesting pruning" data-aos="fade-up" data-aos-delay="120">
+      <div class="worker-header bg-gradient-to-br from-violet-400 to-violet-700">
+        <div class="worker-avatar">KP</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Kailash Patel</h4>
+          <span class="text-xs text-gray-400">1.9 km</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 5.0</span>
+          <span class="text-gray-400">• 243 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌱 Sowing</span>
+          <span class="worker-skill-tag">🌾 Harvest</span>
+          <span class="worker-skill-tag">✂️ Pruning</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Mehsana • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹480</span><span class="text-gray-400 text-xs">/day</span></div>
+          <button onclick="openLabourModal('Kailash Patel', '480', 'Sowing, Harvesting, Pruning')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Worker 8 – Group available -->
+    <div class="worker-card border-2 border-soil-200 bg-soil-50" data-skill="harvesting general" data-aos="fade-up" data-aos-delay="180">
+      <div class="worker-header bg-gradient-to-br from-soil-400 to-soil-600">
+        <div class="worker-avatar">GT</div>
+        <div class="worker-avail-dot"></div>
+      </div>
+      <div class="worker-body">
+        <div class="flex justify-between items-start mb-1">
+          <h4 class="font-bold text-gray-900">Gita Team</h4>
+          <span class="text-xs bg-soil-200 text-soil-700 px-2 py-0.5 rounded-full font-bold">Group of 5</span>
+        </div>
+        <div class="flex items-center space-x-1 text-xs mb-2">
+          <span class="text-soil-500">⭐ 4.9</span>
+          <span class="text-gray-400">• 91 jobs</span>
+        </div>
+        <div class="flex flex-wrap gap-1 mb-3">
+          <span class="worker-skill-tag">🌾 Harvesting</span>
+          <span class="worker-skill-tag">🔨 General</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-3">📍 Bhavnagar • Available Today</div>
+        <div class="flex items-center justify-between">
+          <div><span class="font-bold text-farm-700">₹1,800</span><span class="text-gray-400 text-xs">/5 people/day</span></div>
+          <button onclick="openLabourModal('Gita Team (5 Workers)', '1800', 'Harvesting Team')" class="book-btn text-xs">Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Labour Booking Modal -->
+<div id="labour-modal" class="modal-overlay hidden">
+  <div class="modal-box max-w-md w-full mx-4">
+    <div class="modal-header">
+      <h3 class="text-xl font-bold text-gray-900">Book Worker</h3>
+      <button onclick="closeLabourModal()" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+    </div>
+
+    <div class="p-5 space-y-4">
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm" id="lm-avatar">RP</div>
+        <div>
+          <div class="font-semibold text-gray-900 text-sm" id="lm-name">Rajesh Patel</div>
+          <div class="text-xs text-gray-500" id="lm-skills">Harvesting, Sowing</div>
+          <div class="text-farm-600 font-bold text-sm" id="lm-price">₹450/day</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="modal-label">Start Date</label>
+          <input type="date" id="lm-start" class="modal-input">
+        </div>
+        <div>
+          <label class="modal-label">No. of Days</label>
+          <select id="lm-days" class="modal-input" onchange="updateLabourTotal()">
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3">3 Days</option>
+            <option value="5">5 Days</option>
+            <option value="7">7 Days</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="modal-label">Task Description</label>
+        <textarea placeholder="e.g. Wheat harvesting on 3 acre field..." rows="2" class="modal-input resize-none"></textarea>
+      </div>
+      <div>
+        <label class="modal-label">Your Mobile Number</label>
+        <input type="tel" placeholder="+91 98765 43210" class="modal-input">
+      </div>
+      <div>
+        <label class="modal-label">Farm Location</label>
+        <input type="text" placeholder="Village name, Taluka" class="modal-input">
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-3 flex justify-between items-center border border-gray-200">
+        <span class="text-gray-600 text-sm font-medium">Total Amount</span>
+        <span class="text-xl font-bold text-farm-700" id="lm-total">₹450</span>
+      </div>
+    </div>
+
+    <div class="px-5 pb-5">
+      <button onclick="confirmLabour()" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg">
+        ✅ Confirm Booking
+      </button>
+      <p class="text-gray-400 text-xs text-center mt-2">Worker will be notified immediately via SMS.</p>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+  let labourPrice = 450;
+
+  function filterBySkill(skill) {
+    document.querySelectorAll('.skill-filter-btn').forEach(b => b.classList.remove('active-skill-btn'));
+    event.target.classList.add('active-skill-btn');
+
+    const cards = document.querySelectorAll('.worker-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const skills = card.dataset.skill || '';
+      if (skill === 'all' || skills.includes(skill)) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    document.getElementById('labour-count').textContent = visible + ' worker' + (visible !== 1 ? 's' : '');
+  }
+
+  function openLabourModal(name, price, skills) {
+    labourPrice = parseInt(price);
+    document.getElementById('lm-name').textContent = name;
+    document.getElementById('lm-skills').textContent = skills;
+    document.getElementById('lm-price').textContent = '₹' + parseInt(price).toLocaleString('en-IN') + '/day';
+    document.getElementById('lm-total').textContent = '₹' + parseInt(price).toLocaleString('en-IN');
+    document.getElementById('lm-avatar').textContent = name.split(' ').map(w => w[0]).join('').slice(0, 2);
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('lm-start').value = today;
+    document.getElementById('lm-start').min = today;
+    document.getElementById('labour-modal').classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeLabourModal() {
+    document.getElementById('labour-modal').classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function updateLabourTotal() {
+    const days = parseInt(document.getElementById('lm-days').value);
+    document.getElementById('lm-total').textContent = '₹' + (labourPrice * days).toLocaleString('en-IN');
+  }
+
+  function confirmLabour() {
+    closeLabourModal();
+    showToast('Worker Booked! 👷', 'Worker will arrive at your farm on the selected date.', '✅');
+  }
+
+  document.getElementById('labour-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeLabourModal();
+  });
+</script>
