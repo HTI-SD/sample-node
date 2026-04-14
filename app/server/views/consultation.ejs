@@ -327,6 +327,7 @@
   }
 
   function confirmConsult() {
+    addToCartAndConfirm(document.getElementById('cm-name').textContent, 200, '👨‍💼');
     closeConsultModal();
     showToast('Consultation Booked!', 'Expert will call you at the selected time.', '📞');
   }

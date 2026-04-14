@@ -1,0 +1,413 @@
+<%- include('partials/header', { title: 'Become a Provider – FarmSeva', activePage: 'provider' }) %>
+
+<!-- Hero -->
+<section class="relative bg-gradient-to-br from-farm-900 via-farm-800 to-farm-700 pt-16 pb-24 overflow-hidden">
+  <div class="absolute inset-0 opacity-10" style="background-image:url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/svg%3E\");"></div>
+  <div class="absolute top-10 right-20 w-72 h-72 bg-soil-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-10 w-64 h-64 bg-farm-500/20 rounded-full blur-3xl"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-white space-y-6">
+        <div class="inline-flex items-center space-x-2 bg-soil-500/20 border border-soil-400/30 rounded-full px-4 py-1.5">
+          <span class="w-2 h-2 bg-soil-400 rounded-full animate-pulse"></span>
+          <span class="text-soil-300 text-sm font-medium" data-translate="provider-badge">340+ Providers Already Earning</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight">
+          <span class="text-white" data-translate="provider-hero-line1">Apna Equipment</span><br>
+          <span class="text-soil-400" data-translate="provider-hero-line2">किराए पर दें, Kamaayein</span>
+        </h1>
+        <p class="text-farm-100 text-lg leading-relaxed" data-translate="provider-hero-desc">
+          Turn your idle tractor, tools, or skills into a steady income. Join FarmSeva as a provider and start earning from day 1.
+        </p>
+        <!-- Earnings cards -->
+        <div class="grid grid-cols-3 gap-3">
+          <div class="bg-white/10 border border-white/20 rounded-2xl p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl font-bold text-soil-300">₹25K+</div>
+            <div class="text-farm-200 text-xs mt-1" data-translate="provider-earn-equip">Equipment avg/month</div>
+          </div>
+          <div class="bg-white/10 border border-white/20 rounded-2xl p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl font-bold text-soil-300">₹18K+</div>
+            <div class="text-farm-200 text-xs mt-1" data-translate="provider-earn-labour">Labour avg/month</div>
+          </div>
+          <div class="bg-white/10 border border-white/20 rounded-2xl p-4 text-center backdrop-blur-sm">
+            <div class="text-2xl font-bold text-soil-300">₹30K+</div>
+            <div class="text-farm-200 text-xs mt-1" data-translate="provider-earn-expert">Expert avg/month</div>
+          </div>
+        </div>
+        <!-- Trust points -->
+        <div class="space-y-2">
+          <div class="flex items-center space-x-3 text-farm-100 text-sm"><span class="text-soil-400 text-lg">✓</span><span data-translate="provider-trust-1">Weekly bank transfer — no delay</span></div>
+          <div class="flex items-center space-x-3 text-farm-100 text-sm"><span class="text-soil-400 text-lg">✓</span><span data-translate="provider-trust-2">You set your own price & schedule</span></div>
+          <div class="flex items-center space-x-3 text-farm-100 text-sm"><span class="text-soil-400 text-lg">✓</span><span data-translate="provider-trust-3">Insurance cover on every booking</span></div>
+          <div class="flex items-center space-x-3 text-farm-100 text-sm"><span class="text-soil-400 text-lg">✓</span><span data-translate="provider-trust-4">Dedicated support for providers</span></div>
+        </div>
+      </div>
+
+      <!-- Sign-up card -->
+      <div class="bg-white rounded-3xl shadow-2xl p-7 max-w-md w-full mx-auto" id="signup-card">
+        <!-- Steps indicator -->
+        <div class="flex items-center justify-between mb-6" id="step-bar">
+          <div class="provider-step active-provider-step" id="pstep-1"><span>1</span></div>
+          <div class="step-connector" id="pconn-1"></div>
+          <div class="provider-step" id="pstep-2"><span>2</span></div>
+          <div class="step-connector" id="pconn-2"></div>
+          <div class="provider-step" id="pstep-3"><span>3</span></div>
+          <div class="step-connector" id="pconn-3"></div>
+          <div class="provider-step" id="pstep-4"><span>✓</span></div>
+        </div>
+
+        <!-- Step 1 — What will you offer? -->
+        <div id="step-content-1">
+          <h3 class="text-xl font-bold text-gray-900 mb-1" data-translate="step1-title">What will you offer?</h3>
+          <p class="text-gray-400 text-sm mb-5" data-translate="step1-desc">Select all that apply. You can add more later.</p>
+          <div class="grid grid-cols-2 gap-3 mb-6" id="service-type-grid">
+            <label class="service-type-option">
+              <input type="checkbox" class="hidden service-checkbox" value="equipment">
+              <div class="service-type-card" data-service="equipment">
+                <span class="text-3xl">🚜</span>
+                <p class="font-semibold text-gray-800 text-sm mt-2" data-translate="st-equipment">Equipment Rental</p>
+                <p class="text-xs text-gray-400 mt-0.5">Tractor, Drone etc.</p>
+              </div>
+            </label>
+            <label class="service-type-option">
+              <input type="checkbox" class="hidden service-checkbox" value="labour">
+              <div class="service-type-card" data-service="labour">
+                <span class="text-3xl">👨‍🌾</span>
+                <p class="font-semibold text-gray-800 text-sm mt-2" data-translate="st-labour">Skilled Labour</p>
+                <p class="text-xs text-gray-400 mt-0.5">Sowing, Harvesting</p>
+              </div>
+            </label>
+            <label class="service-type-option">
+              <input type="checkbox" class="hidden service-checkbox" value="expert">
+              <div class="service-type-card" data-service="expert">
+                <span class="text-3xl">👨‍💼</span>
+                <p class="font-semibold text-gray-800 text-sm mt-2" data-translate="st-expert">Expert Advice</p>
+                <p class="text-xs text-gray-400 mt-0.5">Soil, Crop, Organic</p>
+              </div>
+            </label>
+            <label class="service-type-option">
+              <input type="checkbox" class="hidden service-checkbox" value="repair">
+              <div class="service-type-card" data-service="repair">
+                <span class="text-3xl">🔧</span>
+                <p class="font-semibold text-gray-800 text-sm mt-2" data-translate="st-repair">Repair Service</p>
+                <p class="text-xs text-gray-400 mt-0.5">Pump, Tractor, Drip</p>
+              </div>
+            </label>
+          </div>
+          <button onclick="goToStep(2)" class="w-full bg-gradient-to-r from-farm-600 to-farm-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg hover:-translate-y-0.5" data-translate="next-btn">
+            Continue →
+          </button>
+        </div>
+
+        <!-- Step 2 — Sign Up Method -->
+        <div id="step-content-2" class="hidden">
+          <h3 class="text-xl font-bold text-gray-900 mb-1" data-translate="step2-title">Create your account</h3>
+          <p class="text-gray-400 text-sm mb-6" data-translate="step2-desc">Choose how you'd like to sign up</p>
+
+          <!-- Google sign in (mock) -->
+          <button onclick="handleGoogleSignup()" class="w-full flex items-center justify-center space-x-3 border-2 border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50 py-3.5 rounded-2xl font-semibold text-gray-700 transition-all shadow-sm hover:shadow-md mb-3 group">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span data-translate="google-signup">Continue with Google</span>
+          </button>
+
+          <div class="flex items-center my-4">
+            <div class="flex-1 h-px bg-gray-200"></div>
+            <span class="px-4 text-gray-400 text-sm" data-translate="or-divider">or</span>
+            <div class="flex-1 h-px bg-gray-200"></div>
+          </div>
+
+          <!-- Mobile number -->
+          <div class="mb-4">
+            <label class="modal-label" data-translate="mobile-label">Mobile Number</label>
+            <div class="flex space-x-2">
+              <div class="flex items-center border border-gray-200 rounded-xl px-3 text-sm text-gray-600 bg-gray-50 font-semibold flex-shrink-0">🇮🇳 +91</div>
+              <input type="tel" id="provider-mobile" placeholder="98765 43210" class="modal-input flex-1" maxlength="10">
+            </div>
+          </div>
+
+          <button onclick="sendOTP()" class="w-full bg-gradient-to-r from-farm-600 to-farm-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg hover:-translate-y-0.5" data-translate="send-otp-btn">
+            Send OTP via SMS
+          </button>
+          <button onclick="goToStep(1)" class="w-full text-gray-400 hover:text-gray-600 text-sm mt-3 font-medium transition-colors" data-translate="back-btn">← Back</button>
+        </div>
+
+        <!-- Step 3 — OTP Verification -->
+        <div id="step-content-3" class="hidden">
+          <div class="text-center mb-5">
+            <div class="w-16 h-16 bg-farm-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <span class="text-3xl">📱</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900" data-translate="otp-title">Enter OTP</h3>
+            <p class="text-gray-400 text-sm mt-1">Sent to +91 <span id="otp-mobile-display">XXXXXXXXXX</span></p>
+          </div>
+
+          <!-- 6-digit OTP input -->
+          <div class="flex justify-center space-x-3 mb-5">
+            <% for(let i=0;i<6;i++) { %>
+            <input type="text" maxlength="1" class="otp-input w-11 h-12 text-center text-xl font-bold border-2 border-gray-200 rounded-xl focus:border-farm-500 focus:ring-2 focus:ring-farm-100 outline-none transition-all" oninput="otpAutoAdvance(this, <%= i %>)" id="otp-<%= i %>">
+            <% } %>
+          </div>
+
+          <button onclick="verifyOTP()" id="verify-btn" class="w-full bg-gradient-to-r from-farm-600 to-farm-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg" data-translate="verify-btn">
+            Verify OTP
+          </button>
+          <div class="text-center mt-3">
+            <span class="text-gray-400 text-sm" data-translate="no-otp">Didn't receive? </span>
+            <button onclick="sendOTP()" class="text-farm-600 text-sm font-semibold hover:underline" data-translate="resend-otp">Resend OTP</button>
+          </div>
+          <button onclick="goToStep(2)" class="w-full text-gray-400 hover:text-gray-600 text-sm mt-2 font-medium" data-translate="back-btn">← Back</button>
+        </div>
+
+        <!-- Step 4 — Profile Setup -->
+        <div id="step-content-4" class="hidden">
+          <h3 class="text-xl font-bold text-gray-900 mb-1" data-translate="step4-title">Complete your profile</h3>
+          <p class="text-gray-400 text-sm mb-5" data-translate="step4-desc">This helps farmers find and trust you.</p>
+          <div class="space-y-3">
+            <div>
+              <label class="modal-label" data-translate="name-label">Full Name</label>
+              <input type="text" placeholder="Ramesh Patel" class="modal-input">
+            </div>
+            <div>
+              <label class="modal-label" data-translate="village-label">Village / City</label>
+              <input type="text" placeholder="Borsad, Anand, Gujarat" class="modal-input">
+            </div>
+            <div>
+              <label class="modal-label" data-translate="experience-label">Years of Experience</label>
+              <select class="modal-input">
+                <option>Less than 1 year</option>
+                <option>1–3 years</option>
+                <option>3–5 years</option>
+                <option>5–10 years</option>
+                <option>More than 10 years</option>
+              </select>
+            </div>
+            <div>
+              <label class="modal-label" data-translate="lang-label">Languages Spoken</label>
+              <div class="flex flex-wrap gap-2 mt-1">
+                <% ['हिंदी','ગુજ','मराठी','English','ਪੰਜਾਬੀ'].forEach(l=>{ %>
+                <label class="flex items-center space-x-1.5 text-sm text-gray-600 cursor-pointer">
+                  <input type="checkbox" class="accent-farm-600"><span><%= l %></span>
+                </label>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <label class="modal-label" data-translate="aadhar-label">Aadhaar / ID Number (Optional)</label>
+              <input type="text" placeholder="XXXX XXXX XXXX" class="modal-input" maxlength="14">
+            </div>
+          </div>
+          <button onclick="submitProfile()" class="w-full mt-5 bg-gradient-to-r from-soil-500 to-soil-600 hover:from-soil-600 hover:to-soil-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg hover:-translate-y-0.5" data-translate="submit-profile-btn">
+            🎉 Start Earning!
+          </button>
+        </div>
+
+        <!-- Step 5 — Success -->
+        <div id="step-content-5" class="hidden text-center py-4">
+          <div class="w-20 h-20 bg-farm-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-4xl">🎉</span>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2" data-translate="success-title">Welcome to FarmSeva!</h3>
+          <p class="text-gray-500 text-sm mb-6" data-translate="success-desc">Your provider profile is under review. We'll activate it within 24 hours and notify you via SMS.</p>
+          <div class="bg-farm-50 border border-farm-200 rounded-2xl p-4 mb-5 text-left space-y-2">
+            <div class="flex items-center space-x-3"><span class="text-farm-600">✓</span><span class="text-sm text-gray-700" data-translate="next-step-1">Profile submitted for verification</span></div>
+            <div class="flex items-center space-x-3"><span class="text-soil-500">⏳</span><span class="text-sm text-gray-700" data-translate="next-step-2">Background check in progress (24hrs)</span></div>
+            <div class="flex items-center space-x-3"><span class="text-gray-300">○</span><span class="text-sm text-gray-400" data-translate="next-step-3">First booking will arrive soon!</span></div>
+          </div>
+          <a href="/" class="inline-flex items-center space-x-2 bg-farm-600 text-white font-bold px-7 py-3 rounded-2xl hover:bg-farm-700 transition-colors" data-translate="go-home-btn">
+            Go to Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why become a provider -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="text-farm-600 font-semibold text-sm uppercase tracking-widest" data-translate="benefits-label">Why Join Us</span>
+      <h2 class="text-3xl font-bold text-gray-900 mt-2" data-translate="benefits-title">प्रदाता बनने के फायदे</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-6 rounded-2xl bg-farm-50 border border-farm-100" data-aos="zoom-in" data-aos-delay="0">
+        <div class="text-4xl mb-3">💸</div>
+        <h4 class="font-bold text-gray-900 mb-2" data-translate="benefit-1-title">Earn Extra Income</h4>
+        <p class="text-gray-500 text-sm" data-translate="benefit-1-desc">Your idle equipment earns ₹800–₹2,500/day while you do other work.</p>
+      </div>
+      <div class="text-center p-6 rounded-2xl bg-soil-50 border border-soil-100" data-aos="zoom-in" data-aos-delay="100">
+        <div class="text-4xl mb-3">🗓</div>
+        <h4 class="font-bold text-gray-900 mb-2" data-translate="benefit-2-title">Flexible Schedule</h4>
+        <p class="text-gray-500 text-sm" data-translate="benefit-2-desc">Accept or decline any booking. Work on your terms, your time.</p>
+      </div>
+      <div class="text-center p-6 rounded-2xl bg-blue-50 border border-blue-100" data-aos="zoom-in" data-aos-delay="200">
+        <div class="text-4xl mb-3">⚡</div>
+        <h4 class="font-bold text-gray-900 mb-2" data-translate="benefit-3-title">Fast Payments</h4>
+        <p class="text-gray-500 text-sm" data-translate="benefit-3-desc">Get paid directly to your bank account every week. No delay.</p>
+      </div>
+      <div class="text-center p-6 rounded-2xl bg-purple-50 border border-purple-100" data-aos="zoom-in" data-aos-delay="300">
+        <div class="text-4xl mb-3">🛡</div>
+        <h4 class="font-bold text-gray-900 mb-2" data-translate="benefit-4-title">Insurance Cover</h4>
+        <p class="text-gray-500 text-sm" data-translate="benefit-4-desc">Every booking is insured. Your equipment is protected during service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Provider stories -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-gray-900 text-center mb-10" data-translate="provider-stories-title" data-aos="fade-up">
+      हमारे प्रदाताओं की कहानियां
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-start space-x-3 mb-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-bold">MR</div>
+          <div>
+            <div class="font-bold text-gray-900">Mukesh Rathod</div>
+            <div class="text-xs text-gray-400">Tractor Owner • Anand, Gujarat</div>
+            <div class="text-soil-500 text-xs">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm italic">"Mera tractor khet ke baad khali rehta tha. FarmSeva se ab ₹22,000/month extra aa raha hai. Ghar ka kharch nikal gaya!"</p>
+        <div class="mt-3 text-farm-600 text-xs font-semibold">💰 Earns ₹22,000/month</div>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-start space-x-3 mb-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold">KS</div>
+          <div>
+            <div class="font-bold text-gray-900">Dr. Kavita Shah</div>
+            <div class="text-xs text-gray-400">Agronomist • Vadodara</div>
+            <div class="text-soil-500 text-xs">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm italic">"I give online consultations between 6–8 PM daily. That's ₹28,000 extra every month — just 2 hours daily from home!"</p>
+        <div class="mt-3 text-farm-600 text-xs font-semibold">💰 Earns ₹28,000/month</div>
+      </div>
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-start space-x-3 mb-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold">BT</div>
+          <div>
+            <div class="font-bold text-gray-900">Bharat Trivedi</div>
+            <div class="text-xs text-gray-400">Pump Mechanic • Rajkot</div>
+            <div class="text-soil-500 text-xs">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p class="text-gray-600 text-sm italic">"Pehle 2-3 kaam milte the per month. FarmSeva se ab 15-20 bookings aati hain. Ek banda zyada rakh liya maine!"</p>
+        <div class="mt-3 text-farm-600 text-xs font-semibold">💰 Earns ₹35,000/month</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+<script>
+  let currentStep = 1;
+
+  // Service type card toggle
+  document.querySelectorAll('.service-checkbox').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const card = cb.closest('label').querySelector('.service-type-card');
+      card.classList.toggle('selected-service-type', cb.checked);
+    });
+  });
+
+  // Click on card toggles checkbox
+  document.querySelectorAll('.service-type-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const cb = card.closest('label').querySelector('.service-checkbox');
+      cb.checked = !cb.checked;
+      card.classList.toggle('selected-service-type', cb.checked);
+    });
+  });
+
+  function goToStep(n) {
+    // Validate step 1
+    if (n === 2) {
+      const checked = document.querySelectorAll('.service-checkbox:checked');
+      if (checked.length === 0) {
+        showToast('Select at least one service', 'Please pick what you will offer.', '⚠️');
+        return;
+      }
+    }
+
+    document.getElementById('step-content-' + currentStep).classList.add('hidden');
+    currentStep = n;
+    document.getElementById('step-content-' + currentStep).classList.remove('hidden');
+
+    // Update step bar
+    for (let i = 1; i <= 4; i++) {
+      const el = document.getElementById('pstep-' + i);
+      const conn = document.getElementById('pconn-' + (i-1));
+      if (i < n) {
+        el.classList.remove('active-provider-step');
+        el.classList.add('done-provider-step');
+        el.querySelector('span').textContent = '✓';
+        if (conn) conn.classList.add('done-connector');
+      } else if (i === n) {
+        el.classList.add('active-provider-step');
+        el.classList.remove('done-provider-step');
+      } else {
+        el.classList.remove('active-provider-step','done-provider-step');
+        el.querySelector('span').textContent = i;
+      }
+    }
+  }
+
+  function handleGoogleSignup() {
+    const btn = event.target.closest('button');
+    btn.disabled = true;
+    btn.innerHTML = '<svg class="w-4 h-4 animate-spin mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg> Signing in with Google...';
+    setTimeout(() => {
+      goToStep(4);
+    }, 1800);
+  }
+
+  function sendOTP() {
+    const mobile = document.getElementById('provider-mobile').value.trim();
+    if (mobile.length < 10) {
+      showToast('Enter valid mobile number', 'Please enter a 10-digit number.', '⚠️');
+      return;
+    }
+    document.getElementById('otp-mobile-display').textContent = '+91 ' + mobile;
+    goToStep(3);
+    showToast('OTP Sent!', 'SMS sent to +91 ' + mobile + '. Use 1 2 3 4 5 6 for demo.', '📱');
+    // Auto-fill OTP for demo
+    setTimeout(() => {
+      ['1','2','3','4','5','6'].forEach((d,i) => {
+        document.getElementById('otp-' + i).value = d;
+      });
+    }, 800);
+  }
+
+  function otpAutoAdvance(input, idx) {
+    if (input.value.length === 1 && idx < 5) {
+      document.getElementById('otp-' + (idx + 1)).focus();
+    }
+  }
+
+  function verifyOTP() {
+    const code = Array.from({length:6}, (_,i) => document.getElementById('otp-'+i).value).join('');
+    if (code.length < 6) { showToast('Enter full OTP', 'Please enter all 6 digits.', '⚠️'); return; }
+    const btn = document.getElementById('verify-btn');
+    btn.textContent = 'Verifying...';
+    btn.disabled = true;
+    setTimeout(() => goToStep(4), 1200);
+  }
+
+  function submitProfile() {
+    showToast('Profile Submitted!', 'We will review and activate your account within 24 hours.', '🎉');
+    setTimeout(() => {
+      document.getElementById('step-content-4').classList.add('hidden');
+      document.getElementById('step-content-5').classList.remove('hidden');
+      document.getElementById('step-bar').classList.add('hidden');
+    }, 800);
+  }
+</script>

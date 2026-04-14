@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FarmSeva – <%= typeof title !== 'undefined' ? title : 'Farming Made Easy' %></title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="alternate icon" href="/images/favicon.svg">
+  <meta name="theme-color" content="#15803d">
+  <!-- OG / Social -->
+  <meta property="og:title" content="FarmSeva – Farming Made Easy">
+  <meta property="og:description" content="On-demand agricultural services for every Indian farmer.">
+  <meta property="og:image" content="/images/logo.svg">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Devanagari:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="/styles/styles.css">
   <script>
@@ -14,23 +22,19 @@
         extend: {
           fontFamily: { poppins: ['Poppins', 'sans-serif'] },
           colors: {
-            farm: {
-              50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0',
-              300: '#86efac', 400: '#4ade80', 500: '#22c55e',
-              600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d',
-            },
-            soil: { 50: '#fefce8', 100: '#fef9c3', 200: '#fef08a', 300: '#fde047', 400: '#facc15', 500: '#eab308', 600: '#ca8a04', 700: '#a16207', 800: '#854d0e', 900: '#713f12' },
+            farm: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+            soil: { 50:'#fefce8',100:'#fef9c3',200:'#fef08a',300:'#fde047',400:'#facc15',500:'#eab308',600:'#ca8a04',700:'#a16207',800:'#854d0e',900:'#713f12' },
           },
           animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'float-delayed': 'float 6s ease-in-out 2s infinite',
-            'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
-            'slide-up': 'slideUp 0.5s ease-out',
+            'float':'float 6s ease-in-out infinite',
+            'pulse-soft':'pulseSoft 3s ease-in-out infinite',
+            'bounce-in':'bounceIn 0.4s ease-out',
           },
           keyframes: {
-            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
-            pulseSoft: { '0%,100%': { opacity: '0.8' }, '50%': { opacity: '1' } },
-            slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            float:{'0%,100%':{transform:'translateY(0px)'},'50%':{transform:'translateY(-20px)'}},
+            pulseSoft:{'0%,100%':{opacity:'0.8'},'50%':{opacity:'1'}},
+            bounceIn:{'0%':{transform:'scale(0.3)',opacity:'0'},'60%':{transform:'scale(1.1)'},'100%':{transform:'scale(1)',opacity:'1'}},
+            slideUp:{'0%':{opacity:'0',transform:'translateY(20px)'},'100%':{opacity:'1',transform:'translateY(0)'}},
           }
         }
       }
@@ -40,55 +44,73 @@
 <body class="font-poppins bg-gray-50 text-gray-800">
 
 <!-- Navigation -->
-<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+<nav class="fixed top-0 left-0 right-0 z-50" id="navbar">
   <div class="bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
 
         <!-- Logo -->
-        <a href="/" class="flex items-center space-x-2 group">
-          <div class="w-10 h-10 bg-gradient-to-br from-farm-500 to-farm-700 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <span class="text-xl">🌱</span>
-          </div>
-          <div class="flex items-baseline">
+        <a href="/" class="flex items-center group flex-shrink-0">
+          <img src="/images/logo.svg" alt="FarmSeva" class="h-11 w-auto group-hover:scale-105 transition-transform drop-shadow-md" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="hidden items-baseline">
             <span class="text-xl font-bold text-farm-700">Farm</span>
             <span class="text-xl font-bold text-soil-500">Seva</span>
-            <span class="ml-1 text-xs text-gray-400 font-normal hidden sm:inline">by Kisan</span>
           </div>
         </a>
 
         <!-- Desktop Nav -->
-        <div class="hidden lg:flex items-center space-x-1">
-          <a href="/equipment" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'equipment' ? 'nav-active' : '' %>">
-            <span class="mr-1">🚜</span><span data-translate="nav-equipment">Equipment</span>
+        <div class="hidden xl:flex items-center space-x-0.5">
+          <a href="/equipment" class="nav-link <%= typeof activePage!=='undefined'&&activePage==='equipment'?'nav-active':'' %>">
+            <span>🚜</span><span data-translate="nav-equipment">Equipment</span>
           </a>
-          <a href="/labour" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'labour' ? 'nav-active' : '' %>">
-            <span class="mr-1">👨‍🌾</span><span data-translate="nav-labour">Labour</span>
+          <a href="/labour" class="nav-link <%= typeof activePage!=='undefined'&&activePage==='labour'?'nav-active':'' %>">
+            <span>👨‍🌾</span><span data-translate="nav-labour">Labour</span>
           </a>
-          <a href="/consultation" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'consultation' ? 'nav-active' : '' %>">
-            <span class="mr-1">👨‍💼</span><span data-translate="nav-experts">Experts</span>
+          <a href="/consultation" class="nav-link <%= typeof activePage!=='undefined'&&activePage==='consultation'?'nav-active':'' %>">
+            <span>👨‍💼</span><span data-translate="nav-experts">Experts</span>
           </a>
-          <a href="/disease" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'disease' ? 'nav-active' : '' %>">
-            <span class="mr-1">🔬</span><span data-translate="nav-disease">Disease AI</span>
+          <a href="/disease" class="nav-link <%= typeof activePage!=='undefined'&&activePage==='disease'?'nav-active':'' %>">
+            <span>🔬</span><span data-translate="nav-disease">Disease AI</span>
           </a>
-          <a href="/weather" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'weather' ? 'nav-active' : '' %>">
-            <span class="mr-1">🌤</span><span data-translate="nav-weather">Weather</span>
+          <a href="/weather" class="nav-link <%= typeof activePage!=='undefined'&&activePage==='weather'?'nav-active':'' %>">
+            <span>🌤</span><span data-translate="nav-weather">Weather</span>
           </a>
-          <a href="/group-booking" class="nav-link <%= typeof activePage !== 'undefined' && activePage === 'group' ? 'nav-active' : '' %>">
-            <span class="mr-1">👥</span><span data-translate="nav-group">Group</span>
+          <a href="/group-booking" class="nav-link <%= typeof activePage!=='undefined'&&activePage==='group'?'nav-active':'' %>">
+            <span>👥</span><span data-translate="nav-group">Group</span>
           </a>
         </div>
 
         <!-- Right actions -->
-        <div class="flex items-center space-x-3">
-          <button id="lang-toggle" class="hidden md:flex items-center space-x-1 text-xs font-medium text-gray-500 hover:text-farm-600 border border-gray-200 rounded-full px-3 py-1.5 hover:border-farm-300 transition-all">
+        <div class="flex items-center space-x-2">
+
+          <!-- Language toggle -->
+          <button id="lang-toggle" class="hidden sm:flex items-center space-x-1 text-xs font-semibold text-gray-500 hover:text-farm-600 border border-gray-200 rounded-full px-3 py-1.5 hover:border-farm-300 transition-all" title="Switch Language">
             <span id="lang-flag">🇮🇳</span>
             <span id="lang-text">हिंदी</span>
           </button>
-          <a href="/equipment" class="hidden sm:inline-flex items-center bg-gradient-to-r from-farm-600 to-farm-700 hover:from-farm-700 hover:to-farm-800 text-white px-5 py-2 rounded-full font-semibold text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0">
+
+          <!-- Cart / My Bookings -->
+          <a href="/my-bookings" class="relative flex items-center space-x-1 text-gray-600 hover:text-farm-600 transition-colors p-2 rounded-xl hover:bg-farm-50" title="My Bookings">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            </svg>
+            <span id="cart-badge" class="hidden absolute -top-0.5 -right-0.5 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center animate-bounce-in">0</span>
+            <span class="hidden lg:inline text-sm font-medium" data-translate="nav-my-bookings">My Bookings</span>
+          </a>
+
+          <!-- Become Provider -->
+          <a href="/become-provider" class="hidden md:flex items-center space-x-1 border border-farm-300 text-farm-700 hover:bg-farm-50 px-3 py-1.5 rounded-full font-semibold text-xs transition-all">
+            <span>💼</span>
+            <span data-translate="nav-become-provider">Earn with Us</span>
+          </a>
+
+          <!-- Book Now CTA -->
+          <a href="/equipment" class="hidden sm:inline-flex items-center bg-gradient-to-r from-farm-600 to-farm-700 hover:from-farm-700 hover:to-farm-800 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
             <span data-translate="nav-book-now">Book Now</span>
           </a>
-          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-gray-500 hover:bg-gray-100 transition-colors">
+
+          <!-- Mobile hamburger -->
+          <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-xl text-gray-500 hover:bg-gray-100 transition-colors">
             <svg id="menu-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
@@ -101,17 +123,20 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+    <div id="mobile-menu" class="hidden xl:hidden border-t border-gray-100 bg-white">
       <div class="px-4 py-3 grid grid-cols-2 gap-2">
-        <a href="/equipment" class="mobile-nav-link">🚜 Equipment Rental</a>
-        <a href="/labour" class="mobile-nav-link">👨‍🌾 Labour Booking</a>
-        <a href="/consultation" class="mobile-nav-link">👨‍💼 Expert Consult</a>
-        <a href="/disease" class="mobile-nav-link">🔬 Disease AI</a>
-        <a href="/weather" class="mobile-nav-link">🌤 Weather</a>
-        <a href="/group-booking" class="mobile-nav-link">👥 Group Booking</a>
+        <a href="/equipment"     class="mobile-nav-link">🚜 <span data-translate="mobile-equipment">Equipment Rental</span></a>
+        <a href="/labour"        class="mobile-nav-link">👨‍🌾 <span data-translate="mobile-labour">Labour Booking</span></a>
+        <a href="/consultation"  class="mobile-nav-link">👨‍💼 <span data-translate="mobile-experts">Expert Consult</span></a>
+        <a href="/disease"       class="mobile-nav-link">🔬 <span data-translate="mobile-disease">Disease AI</span></a>
+        <a href="/weather"       class="mobile-nav-link">🌤 <span data-translate="mobile-weather">Weather</span></a>
+        <a href="/group-booking" class="mobile-nav-link">👥 <span data-translate="mobile-group">Group Booking</span></a>
+        <a href="/my-bookings"   class="mobile-nav-link">🛒 <span data-translate="mobile-bookings">My Bookings</span></a>
+        <a href="/become-provider" class="mobile-nav-link">💼 <span data-translate="mobile-provider">Earn with Us</span></a>
       </div>
-      <div class="px-4 pb-3 flex space-x-3">
-        <a href="/equipment" class="flex-1 text-center bg-farm-600 text-white py-2.5 rounded-xl font-semibold text-sm">Book a Service</a>
+      <div class="px-4 pb-3 grid grid-cols-2 gap-2">
+        <a href="/equipment" class="text-center bg-farm-600 text-white py-2.5 rounded-xl font-semibold text-sm" data-translate="nav-book-now">Book a Service</a>
+        <button id="mobile-lang-toggle" class="text-center border border-farm-300 text-farm-700 py-2.5 rounded-xl font-semibold text-sm">🇮🇳 हिंदी / EN</button>
       </div>
     </div>
   </div>
@@ -119,4 +144,3 @@
 
 <!-- Spacer for fixed nav -->
 <div class="h-16"></div>
-
