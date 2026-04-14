@@ -165,12 +165,26 @@
 
         <!-- Step 4 — Profile Setup -->
         <div id="step-content-4" class="hidden">
+          <!-- Google signed-in indicator (shown after OAuth mock) -->
+          <div id="google-signed-in-info" class="hidden mb-4 flex items-center space-x-3 bg-green-50 border border-green-200 rounded-2xl px-4 py-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-farm-500 to-farm-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-sm">RK</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-sm font-semibold text-gray-800">Ramesh Kumar</span>
+                <span class="text-green-500 text-sm">✓</span>
+              </div>
+              <div class="flex items-center space-x-1 text-xs text-gray-500">
+                <svg class="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                <span>Signed in with Google</span>
+              </div>
+            </div>
+          </div>
           <h3 class="text-xl font-bold text-gray-900 mb-1" data-translate="step4-title">Complete your profile</h3>
           <p class="text-gray-400 text-sm mb-5" data-translate="step4-desc">This helps farmers find and trust you.</p>
           <div class="space-y-3">
             <div>
               <label class="modal-label" data-translate="name-label">Full Name</label>
-              <input type="text" placeholder="Ramesh Patel" class="modal-input">
+              <input type="text" id="provider-name" placeholder="Ramesh Patel" class="modal-input">
             </div>
             <div>
               <label class="modal-label" data-translate="village-label">Village / City</label>
@@ -308,6 +322,65 @@
 
 <%- include('partials/footer') %>
 
+<!-- ═══ GOOGLE ACCOUNT PICKER MODAL ═══ -->
+<div id="google-picker-modal" class="fixed inset-0 z-[99999] flex items-center justify-center hidden" style="background:rgba(0,0,0,0.5)" onclick="if(event.target===this)closeGoogleModal()">
+  <div class="bg-white rounded-3xl shadow-2xl w-96 max-w-[92vw] overflow-hidden animate-bounce-in">
+
+    <!-- Google-style header -->
+    <div class="px-8 pt-7 pb-5 text-center">
+      <!-- Google wordmark -->
+      <div class="flex justify-center mb-4">
+        <svg height="24" viewBox="0 0 75 24" aria-label="Google">
+          <path d="M9.24 8.19v2.46h5.88c-.18 1.38-.64 2.39-1.34 3.1-.86.86-2.2 1.79-4.54 1.79-3.62 0-6.45-2.92-6.45-6.54S5.62 2.46 9.24 2.46c1.95 0 3.38.77 4.43 1.76L15.4 2.5C13.86 1.08 11.82 0 9.24 0 4.28 0 .11 4.04.11 9s4.17 9 9.13 9c2.68 0 4.7-.88 6.28-2.52 1.62-1.62 2.13-3.91 2.13-5.75 0-.57-.04-1.1-.13-1.54H9.24z" fill="#4285F4"/>
+          <path d="M25 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52s1.52-3.52 3.28-3.52 3.28 1.48 3.28 3.52-1.52 3.52-3.28 3.52z" fill="#EA4335"/>
+          <path d="M38 6.19c-3.21 0-5.83 2.44-5.83 5.81 0 3.34 2.62 5.81 5.83 5.81s5.83-2.46 5.83-5.81c0-3.37-2.62-5.81-5.83-5.81zm0 9.33c-1.76 0-3.28-1.45-3.28-3.52s1.52-3.52 3.28-3.52 3.28 1.48 3.28 3.52-1.52 3.52-3.28 3.52z" fill="#FBBC05"/>
+          <path d="M53.58 7.49h-.09c-.57-.68-1.67-1.3-3.06-1.3-2.91 0-5.56 2.55-5.56 5.83 0 3.26 2.65 5.79 5.56 5.79 1.39 0 2.49-.61 3.06-1.32h.09v.81c0 2.22-1.19 3.41-3.1 3.41-1.56 0-2.53-1.12-2.93-2.07l-2.22.92c.64 1.54 2.33 3.43 5.15 3.43 2.99 0 5.52-1.76 5.52-6.05V6.49h-2.42v1z" fill="#4285F4"/>
+          <path d="M58.93 1h2.42v16.76h-2.42z" fill="#34A853"/>
+          <path d="M63.93 13.01l1.96-1.31 5.37 8.06h-2.87l-4.46-6.75z" fill="#EA4335"/>
+          <path d="M70.3 6.49l-5.28 7.74-1.63-2.45 4.04-5.29H70.3z" fill="#4285F4"/>
+        </svg>
+      </div>
+      <h2 class="text-xl font-normal text-gray-800 mb-1">Sign in with Google</h2>
+      <p class="text-sm text-gray-500">to continue to <span class="font-semibold text-farm-700">FarmSeva</span></p>
+    </div>
+
+    <!-- Divider -->
+    <div class="h-px bg-gray-100 mx-6"></div>
+
+    <!-- "Choose an account" label -->
+    <p class="text-xs text-gray-400 px-6 pt-4 pb-1 uppercase tracking-wider font-medium">Choose an account</p>
+
+    <!-- Account rows -->
+    <div class="px-3 pb-3">
+      <!-- Primary account -->
+      <button onclick="selectGoogleAccount()" class="w-full flex items-center space-x-4 px-4 py-3.5 hover:bg-blue-50 active:bg-blue-100 rounded-2xl transition-colors text-left group">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-farm-500 to-farm-700 flex items-center justify-center text-white font-bold text-base flex-shrink-0 shadow-sm ring-2 ring-farm-100">RK</div>
+        <div class="flex-1 min-w-0">
+          <p class="font-semibold text-gray-900 text-sm">Ramesh Kumar</p>
+          <p class="text-gray-500 text-xs truncate">ramesh.kumar@gmail.com</p>
+        </div>
+        <svg class="w-4 h-4 text-gray-300 group-hover:text-gray-500 flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+      <!-- Use another account -->
+      <button class="w-full flex items-center space-x-4 px-4 py-3 hover:bg-gray-50 rounded-2xl transition-colors text-left text-sm text-gray-500 mt-0.5">
+        <div class="w-11 h-11 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-xl font-light flex-shrink-0">+</div>
+        <span class="text-gray-600">Use another account</span>
+      </button>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="border-t border-gray-100 px-6 py-3 flex items-center justify-between bg-gray-50 rounded-b-3xl">
+      <button onclick="closeGoogleModal()" class="text-sm text-[#1a73e8] font-medium hover:underline">Cancel</button>
+      <div class="flex space-x-3 text-[11px] text-gray-400">
+        <span class="hover:underline cursor-pointer">Privacy</span>
+        <span>·</span>
+        <span class="hover:underline cursor-pointer">Terms</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   let currentStep = 1;
 
@@ -361,13 +434,48 @@
     }
   }
 
+  // ─── Google OAuth mock ────────────────────────────────
+  let _googleSigninBtn = null;
+
   function handleGoogleSignup() {
-    const btn = event.target.closest('button');
-    btn.disabled = true;
-    btn.innerHTML = '<svg class="w-4 h-4 animate-spin mr-2" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg> Signing in with Google...';
+    _googleSigninBtn = event.target.closest('button');
+    document.getElementById('google-picker-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGoogleModal() {
+    document.getElementById('google-picker-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function selectGoogleAccount() {
+    closeGoogleModal();
+
+    // Show "signing in" state on the Google button
+    if (_googleSigninBtn) {
+      _googleSigninBtn.disabled = true;
+      _googleSigninBtn.innerHTML = `
+        <svg class="w-4 h-4 animate-spin mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+        </svg>
+        <span>Signing in as <strong>Ramesh Kumar</strong>...</span>`;
+    }
+
+    // After brief delay: pre-fill profile form, show signed-in banner, go to step 4
     setTimeout(() => {
+      // Pre-fill name from Google account
+      const nameInput = document.getElementById('provider-name');
+      if (nameInput) nameInput.value = 'Ramesh Kumar';
+
       goToStep(4);
-    }, 1800);
+
+      // Reveal the "signed in via Google" info banner in step 4
+      const banner = document.getElementById('google-signed-in-info');
+      if (banner) banner.classList.remove('hidden');
+
+      showToast('Google Sign-in Successful! ✓', 'Welcome, Ramesh Kumar. Complete your provider profile.', '🎉');
+    }, 1600);
   }
 
   function sendOTP() {
