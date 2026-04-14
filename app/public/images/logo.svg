@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="tractorBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d8a2d"/>
+      <stop offset="100%" style="stop-color:#1a5c1a"/>
+    </linearGradient>
+    <linearGradient id="wheelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#444"/>
+      <stop offset="100%" style="stop-color:#222"/>
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4caf50"/>
+      <stop offset="100%" style="stop-color:#2e7d32"/>
+    </linearGradient>
+    <linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5a623"/>
+      <stop offset="100%" style="stop-color:#e8850a"/>
+    </linearGradient>
+    <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#777"/>
+      <stop offset="100%" style="stop-color:#555"/>
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f5e9"/>
+      <stop offset="100%" style="stop-color:#f1f8e9"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.25)"/>
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="rgba(0,0,0,0.2)"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="320" height="200" fill="url(#skyGrad)" rx="16"/>
+
+  <!-- Ground strip -->
+  <ellipse cx="160" cy="158" rx="145" ry="18" fill="url(#groundGrad)" opacity="0.35"/>
+  <rect x="0" y="158" width="320" height="42" fill="url(#groundGrad)" rx="0"/>
+  <rect x="0" y="155" width="320" height="8" rx="4" fill="#4caf50"/>
+
+  <!-- ─── WHEAT LEFT ─── -->
+  <g transform="translate(24, 70)" opacity="0.9">
+    <!-- stem -->
+    <line x1="12" y1="85" x2="12" y2="15" stroke="#c8a000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="12" y1="55" x2="5"  y2="40" stroke="#c8a000" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="65" x2="19" y2="50" stroke="#c8a000" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- grains -->
+    <ellipse cx="12"  cy="12" rx="4" ry="7" fill="#f5c400" transform="rotate(-5,12,12)"/>
+    <ellipse cx="5"   cy="36" rx="3" ry="6" fill="#f5c400" transform="rotate(-20,5,36)"/>
+    <ellipse cx="19"  cy="46" rx="3" ry="6" fill="#f5c400" transform="rotate(20,19,46)"/>
+    <line x1="12" y1="45" x2="3"  y2="32" stroke="#c8a000" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="3"   cy="28" rx="3" ry="6" fill="#e8b800" transform="rotate(-25,3,28)"/>
+  </g>
+
+  <!-- ─── WHEAT RIGHT ─── -->
+  <g transform="translate(268, 70)" opacity="0.9">
+    <line x1="12" y1="85" x2="12" y2="15" stroke="#c8a000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="12" y1="55" x2="5"  y2="40" stroke="#c8a000" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="65" x2="19" y2="50" stroke="#c8a000" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="12"  cy="12" rx="4" ry="7" fill="#f5c400" transform="rotate(5,12,12)"/>
+    <ellipse cx="5"   cy="36" rx="3" ry="6" fill="#f5c400" transform="rotate(-20,5,36)"/>
+    <ellipse cx="19"  cy="46" rx="3" ry="6" fill="#f5c400" transform="rotate(20,19,46)"/>
+    <line x1="12" y1="45" x2="21" y2="32" stroke="#c8a000" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="21"  cy="28" rx="3" ry="6" fill="#e8b800" transform="rotate(25,21,28)"/>
+  </g>
+
+  <!-- ─── TRACTOR ─── -->
+  <g transform="translate(52, 88)" filter="url(#shadow)">
+    <!-- Exhaust pipe -->
+    <rect x="88" y="-12" width="7" height="22" rx="3" fill="#555"/>
+    <ellipse cx="91.5" cy="-12" rx="4" ry="3" fill="#333"/>
+    <!-- Smoke puffs -->
+    <circle cx="91" cy="-18" r="4" fill="#ccc" opacity="0.5"/>
+    <circle cx="94" cy="-24" r="3" fill="#bbb" opacity="0.35"/>
+
+    <!-- Main body -->
+    <path d="M20,50 L20,20 Q20,10 30,10 L90,10 Q100,10 100,20 L100,50 Z" fill="url(#tractorBody)"/>
+    <!-- Hood -->
+    <path d="M60,10 L95,10 Q105,10 108,18 L110,30 L60,30 Z" fill="#246b24"/>
+    <!-- Cab window -->
+    <rect x="23" y="14" width="34" height="24" rx="4" fill="#a8d8ea" opacity="0.85"/>
+    <rect x="25" y="16" width="15" height="20" rx="2" fill="#c8eaf5" opacity="0.7"/>
+
+    <!-- Hitch at back -->
+    <rect x="8" y="38" width="14" height="8" rx="3" fill="#333"/>
+    <rect x="2" y="40" width="8" height="4" rx="2" fill="#444"/>
+
+    <!-- Big rear wheel -->
+    <circle cx="30" cy="55" r="24" fill="url(#wheelGrad)"/>
+    <circle cx="30" cy="55" r="18" fill="#555"/>
+    <circle cx="30" cy="55" r="10" fill="#333"/>
+    <!-- Wheel spokes -->
+    <line x1="30" y1="37" x2="30" y2="73" stroke="#666" stroke-width="2"/>
+    <line x1="12" y1="55" x2="48" y2="55" stroke="#666" stroke-width="2"/>
+    <line x1="17" y1="42" x2="43" y2="68" stroke="#666" stroke-width="2"/>
+    <line x1="43" y1="42" x2="17" y2="68" stroke="#666" stroke-width="2"/>
+    <!-- Tyre treads rear -->
+    <circle cx="30" cy="55" r="24" fill="none" stroke="#333" stroke-width="4" stroke-dasharray="8 6"/>
+
+    <!-- Small front wheel -->
+    <circle cx="100" cy="60" r="14" fill="url(#wheelGrad)"/>
+    <circle cx="100" cy="60" r="9"  fill="#555"/>
+    <circle cx="100" cy="60" r="4"  fill="#333"/>
+    <circle cx="100" cy="60" r="14" fill="none" stroke="#333" stroke-width="3" stroke-dasharray="5 4"/>
+
+    <!-- Headlight -->
+    <ellipse cx="110" cy="28" rx="5" ry="4" fill="#ffe082"/>
+    <ellipse cx="110" cy="28" rx="3" ry="2.5" fill="#fff9c4"/>
+  </g>
+
+  <!-- ─── GEAR (center-top) ─── -->
+  <g transform="translate(148, 18)" filter="url(#shadow)">
+    <circle cx="22" cy="22" r="22" fill="url(#gearGrad)"/>
+    <!-- Gear teeth -->
+    <rect x="19" y="-2" width="6" height="8"  rx="2" fill="#666"/>
+    <rect x="19" y="38" width="6" height="8"  rx="2" fill="#666"/>
+    <rect x="-2" y="19" width="8" height="6"  rx="2" fill="#666"/>
+    <rect x="38" y="19" width="8" height="6"  rx="2" fill="#666"/>
+    <rect x="6"  y="4"  width="6" height="8"  rx="2" fill="#666" transform="rotate(-45,9,8)"/>
+    <rect x="32" y="4"  width="6" height="8"  rx="2" fill="#666" transform="rotate(45,35,8)"/>
+    <rect x="6"  y="32" width="6" height="8"  rx="2" fill="#666" transform="rotate(45,9,36)"/>
+    <rect x="32" y="32" width="6" height="8"  rx="2" fill="#666" transform="rotate(-45,35,36)"/>
+    <circle cx="22" cy="22" r="16" fill="#888"/>
+    <circle cx="22" cy="22" r="9"  fill="#aaa"/>
+    <circle cx="22" cy="22" r="5"  fill="#666"/>
+  </g>
+
+  <!-- ─── WRENCH (left of gear) ─── -->
+  <g transform="translate(112, 14) rotate(-40)" filter="url(#shadow)">
+    <rect x="0" y="0" width="8" height="36" rx="4" fill="#e74c3c"/>
+    <ellipse cx="4" cy="3"  rx="9" ry="6" fill="#c0392b" stroke="#a93226" stroke-width="1"/>
+    <ellipse cx="4" cy="33" rx="7" ry="5" fill="#c0392b"/>
+    <ellipse cx="4" cy="3"  rx="5" ry="3"  fill="#e74c3c"/>
+  </g>
+
+  <!-- ─── HAMMER / PICKAXE (right of gear) ─── -->
+  <g transform="translate(208, 12) rotate(35)" filter="url(#shadow)">
+    <!-- handle -->
+    <rect x="6" y="0" width="5" height="38" rx="2.5" fill="#a0522d"/>
+    <!-- head -->
+    <rect x="-4" y="0" width="22" height="10" rx="4" fill="#555"/>
+    <rect x="-4" y="0" width="8"  height="10" rx="4" fill="#777"/>
+  </g>
+
+  <!-- ─── LOCATION PIN ─── -->
+  <g transform="translate(139, 22)" filter="url(#shadow)">
+    <!-- Pin body -->
+    <path d="M21,0 C9.4,0 0,9.4 0,21 C0,36.8 21,54 21,54 C21,54 42,36.8 42,21 C42,9.4 32.6,0 21,0 Z"
+          fill="url(#pinGrad)"/>
+    <!-- Pin inner circle -->
+    <circle cx="21" cy="21" r="11" fill="white" opacity="0.9"/>
+    <circle cx="21" cy="21" r="7"  fill="url(#pinGrad)"/>
+    <!-- Map marker dot -->
+    <circle cx="21" cy="21" r="3.5" fill="white"/>
+  </g>
+
+  <!-- ─── TEXT: "Farm" ─── -->
+  <text x="60" y="182" font-family="'Arial Black', 'Arial', sans-serif" font-size="32"
+        font-weight="900" fill="#1b5e20" filter="url(#textShadow)" letter-spacing="-0.5">Farm</text>
+
+  <!-- ─── TEXT: "सेवा" (Seva in Devanagari) ─── -->
+  <text x="148" y="182" font-family="'Noto Sans Devanagari', 'Arial', sans-serif" font-size="34"
+        font-weight="900" fill="#e65100" filter="url(#textShadow)">सेवा</text>
+
+  <!-- Decorative underline -->
+  <rect x="58" y="186" width="205" height="4" rx="2" fill="url(#groundGrad)" opacity="0.8"/>
+</svg>

@@ -371,6 +371,7 @@
   }
 
   function confirmLabour() {
+    addToCartAndConfirm(document.getElementById('lm-name').textContent, labourPrice, '👨‍🌾');
     closeLabourModal();
     showToast('Worker Booked! 👷', 'Worker will arrive at your farm on the selected date.', '✅');
   }
