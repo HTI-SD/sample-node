@@ -227,12 +227,20 @@ function applyLanguage(lang) {
   // Update html lang attribute
   document.getElementById('html-root') && (document.getElementById('html-root').lang = lang === 'hi' ? 'hi' : 'en');
 
-  // Update toggle button label
+  // Update desktop toggle button label
   const flag = document.getElementById('lang-flag');
   const text = document.getElementById('lang-text');
   if (flag && text) {
     flag.textContent = '🇮🇳';
     text.textContent = lang === 'hi' ? 'EN' : 'हिंदी';
+  }
+
+  // Sync mobile app-bar language button
+  const mTopFlag = document.getElementById('mobile-top-lang-flag');
+  const mTopText = document.getElementById('mobile-top-lang-text');
+  if (mTopFlag && mTopText) {
+    mTopFlag.textContent = '🇮🇳';
+    mTopText.textContent = lang === 'hi' ? 'EN' : 'हिंदी';
   }
 }
 
@@ -245,12 +253,14 @@ function saveCart(cart) {
   renderCartBadge();
 }
 function renderCartBadge() {
-  const badge = document.getElementById('cart-badge');
-  if (!badge) return;
   const count = getCart().length;
-  badge.textContent = count;
-  if (count > 0) { badge.classList.remove('hidden'); badge.classList.add('flex'); }
-  else           { badge.classList.add('hidden');    badge.classList.remove('flex'); }
+  ['cart-badge', 'mobile-top-cart-badge', 'bottom-tab-cart-badge'].forEach(id => {
+    const badge = document.getElementById(id);
+    if (!badge) return;
+    badge.textContent = count;
+    if (count > 0) { badge.classList.remove('hidden'); badge.classList.add('flex'); }
+    else           { badge.classList.add('hidden');    badge.classList.remove('flex'); }
+  });
 }
 
 // Called from booking modals on confirm
@@ -270,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Apply saved language
   applyLanguage(currentLang);
 
-  // Wire language toggle (desktop + mobile)
-  ['lang-toggle', 'mobile-lang-toggle'].forEach(id => {
+  // Wire all language toggles: desktop, mobile dropdown header, mobile app top bar
+  ['lang-toggle', 'mobile-lang-toggle', 'mobile-top-lang-btn'].forEach(id => {
     const btn = document.getElementById(id);
     if (!btn) return;
     // Replace to remove any old listeners
@@ -295,6 +305,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cart badge on load
   renderCartBadge();
+
+  // Highlight the correct mobile bottom nav tab based on current URL
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('[data-nav-path]').forEach(link => {
+    const navPath = link.getAttribute('data-nav-path');
+    const matches = navPath === '/' ? currentPath === '/' : currentPath.startsWith(navPath);
+    if (matches) link.classList.add('active-bottom-tab');
+  });
 
   // Navbar shadow on scroll
   window.addEventListener('scroll', () => {
