@@ -1,0 +1,18 @@
+{
+  "name": "FarmSeva — किसान का डिजिटल साथी",
+  "short_name": "FarmSeva",
+  "description": "On-demand agricultural services for Indian farmers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#15803d",
+  "theme_color": "#15803d",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/images/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Equipment Rental", "url": "/equipment", "description": "Rent farm equipment" },
+    { "name": "My Bookings",      "url": "/my-bookings", "description": "View your bookings" },
+    { "name": "Disease AI",       "url": "/disease",     "description": "Detect crop diseases" }
+  ]
+}

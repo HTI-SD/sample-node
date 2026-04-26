@@ -695,3 +695,97 @@ body { font-family: 'Poppins', sans-serif; }
   100% { transform: scale(1); opacity: 1; }
 }
 .animate-bounce-in { animation: bounceIn 0.35s ease-out; }
+
+/* ═══════════════════════════════════════════════
+   MOBILE APP STYLES  (phones < 768px / md)
+═══════════════════════════════════════════════ */
+
+/* Service tiles – UC-style 4-column grid */
+.mobile-app-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.mobile-app-tile:active { opacity: 0.72; transform: scale(0.95); }
+
+.mobile-app-tile-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.mobile-app-tile-text {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.mobile-tile-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 9999px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* Mobile bottom navigation */
+.mobile-bottom-tab {
+  color: #9ca3af;
+  min-width: 3rem;
+  text-align: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s;
+}
+.mobile-bottom-tab.active-bottom-tab       { color: #15803d; }
+.mobile-bottom-tab.active-bottom-tab svg   { stroke: #15803d; }
+
+/* How-it-works mini steps (mobile home) */
+.how-step-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 56px;
+}
+.how-step-mini-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.how-step-mini-text {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  line-height: 1.2;
+}
+.how-arrow { color: #bbf7d0; font-size: 1.1rem; margin-top: 0.55rem; flex-shrink: 0; }
+
+/* Extra bottom padding so content clears the fixed bottom nav */
+@media (max-width: 767px) {
+  body { padding-bottom: 68px; }
+}
+
