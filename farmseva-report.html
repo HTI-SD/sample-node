@@ -67,7 +67,7 @@
   .cover-deco.d2 { width: 200px; height: 200px; bottom: 60px; left: -60px; }
   .cover-deco.d3 { width: 100px; height: 100px; top: 120px; left: 40px; }
 
-  .cover-logo { width: 180px; margin-bottom: 28px; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); }
+  .cover-logo { width: 260px; margin-bottom: 28px; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); }
 
   .cover-badge {
     display: inline-block;
@@ -470,9 +470,26 @@
   .page-header-logo { height: 32px; }
   .page-header-title { font-size: 11px; font-weight: 600; color: var(--green-dark); letter-spacing: 0.06em; text-transform: uppercase; }
 
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
   @media print {
-    body { background: white; }
-    .page { margin: 0; box-shadow: none; page-break-after: always; }
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    body { background: white; margin: 0; padding: 0; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+      width: 210mm;
+      min-height: 297mm;
+    }
   }
 </style>
 </head>
