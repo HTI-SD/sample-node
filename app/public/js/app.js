@@ -203,6 +203,33 @@ const T = {
   'footer-support':  { en:'Support',            hi:'सहायता' },
   'footer-contact':  { en:'Contact & Languages',hi:'संपर्क और भाषाएं' },
   'footer-tollfree': { en:'Toll-Free • 24/7',   hi:'टोल-फ्री • 24/7' },
+
+  // ── Mobile home screen tiles & sections ──────────────────────────
+  'mob-tile-equipment': { en:'Equipment',          hi:'उपकरण' },
+  'mob-tile-labour':    { en:'Labour Hire',        hi:'मजदूर बुकिंग' },
+  'mob-tile-expert':    { en:'Expert Consult',     hi:'विशेषज्ञ सलाह' },
+  'mob-tile-disease':   { en:'Disease AI',         hi:'रोग AI' },
+  'mob-tile-weather':   { en:'Weather',            hi:'मौसम' },
+  'mob-tile-group':     { en:'Group Book',         hi:'समूह बुकिंग' },
+  'mob-tile-earn':      { en:'Earn with Us',       hi:'हमारे साथ कमाएं' },
+  'mob-tile-bookings':  { en:'My Bookings',        hi:'मेरी बुकिंग' },
+  'mob-promo-badge':    { en:'AI Powered · Free',  hi:'AI से · मुफ्त' },
+  'mob-promo-title':    { en:'Detect Crop Disease Instantly', hi:'फसल रोग तुरंत पहचानें' },
+  'mob-promo-sub':      { en:'Take a Photo → AI tells you',  hi:'Photo खींचें → AI बताएगा' },
+  'mob-try-free':       { en:'Try Free →',         hi:'मुफ्त आज़माएं →' },
+  'mob-stat-farmers':   { en:'Farmers',            hi:'किसान' },
+  'mob-stat-providers': { en:'Providers',          hi:'प्रदाता' },
+  'mob-stat-states':    { en:'States',             hi:'राज्य' },
+  'mob-how-label':      { en:'How It Works',       hi:'कैसे काम करता है?' },
+  'mob-step-1':         { en:'Pick Service',       hi:'सेवा चुनें' },
+  'mob-step-2':         { en:'Book Date',          hi:'तारीख बुक करें' },
+  'mob-step-3':         { en:'Pay Cash',           hi:'नकद दें' },
+  'mob-step-4':         { en:'Done!',              hi:'हो गया!' },
+  'mob-stories-label':  { en:'Farmer Stories',     hi:'किसानों की बात' },
+  'mob-earn-label':     { en:'Extra Income',       hi:'अतिरिक्त आय' },
+  'mob-earn-title':     { en:'Become a Provider',  hi:'प्रदाता बनें' },
+  'mob-earn-sub':       { en:'Earn ₹25K+/month',  hi:'₹25K+/महीना कमाएं' },
+  'mob-join-now':       { en:'Join Now →',         hi:'अभी जुड़ें →' },
 };
 
 // ─── LANGUAGE ENGINE ─────────────────────────────────
