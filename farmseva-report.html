@@ -7,374 +7,197 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;700;900&display=swap');
 
-  :root {
-    --green-dark:  #14532d;
-    --green-main:  #15803d;
-    --green-mid:   #16a34a;
-    --green-pale:  #dcfce7;
-    --green-bg:    #f0fdf4;
-    --amber:       #d97706;
-    --amber-warm:  #f59e0b;
-    --amber-light: #fef3c7;
-    --gray-900:    #111827;
-    --gray-700:    #374151;
-    --gray-500:    #6b7280;
-    --gray-100:    #f3f4f6;
-    --gray-200:    #e5e7eb;
-    --border:      #e2e8e4;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--gray-900);
-    background: #d6e4d8;
-    font-size: 12.5px;
-    line-height: 1.65;
-  }
+  body { font-family:'Poppins',sans-serif; color:#111; background:#cdd9ce; font-size:13px; line-height:1.65; }
 
   /* ── A4 PAGE ── */
   .page {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 0 auto 16px;
-    background: white;
-    position: relative;
-    overflow: hidden;
-    page-break-after: always;
-    page-break-inside: avoid;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    width:210mm; min-height:297mm;
+    margin:0 auto 16px; background:white;
+    position:relative; overflow:hidden;
+    page-break-after:always; page-break-inside:avoid;
+    box-shadow:0 2px 10px rgba(0,0,0,0.12);
   }
+
+  /* ── HIDE header bar on content pages ── */
+  .page-header { display:none; }
+
+  /* ── SECTION PAGES — more top padding since no header bar ── */
+  .section-page { padding:48px 52px 36px; display:flex; flex-direction:column; }
+
+  /* ── PLAIN LARGE TITLE (reference style) ── */
+  .pg-title {
+    font-size:64px; font-weight:900; color:#14532d;
+    line-height:1.0; letter-spacing:-2px; margin-bottom:6px;
+  }
+  .pg-subtitle {
+    font-size:21px; font-weight:700; color:#d97706;
+    margin-bottom:20px; line-height:1.3;
+  }
+  .pg-label {
+    font-size:11px; font-weight:700; letter-spacing:0.2em;
+    text-transform:uppercase; color:#d97706; margin-bottom:4px;
+  }
+
+  /* ── BODY TEXT ── */
+  .body-text { font-size:13px; color:#222; line-height:1.7; text-align:justify; margin-bottom:14px; }
+  .body-text strong { color:#14532d; }
+
+  /* ── ORANGE SOLID BOX (reference "structure" / UVP style) ── */
+  .orange-box {
+    background:#e07b28; color:white;
+    border-radius:12px; padding:18px 22px;
+    margin-bottom:12px; text-align:center;
+  }
+  .orange-box h4 { font-size:13px; font-weight:700; margin-bottom:6px; }
+  .orange-box p  { font-size:11.5px; line-height:1.6; opacity:0.93; }
+
+  /* ── GREEN SOLID BOX (like reference UVP card) ── */
+  .green-box {
+    background:#14532d; color:white;
+    border-radius:12px; padding:20px 24px; margin-bottom:16px;
+  }
+  .green-box h4 { font-size:13px; font-weight:700; color:#fcd34d; margin-bottom:8px; }
+  .green-box p  { font-size:12px; line-height:1.65; color:rgba(255,255,255,0.88); }
+
+  /* ── BULLET LIST (plain, reference style) ── */
+  .ref-list { list-style:none; margin-bottom:14px; }
+  .ref-list li { font-size:13px; color:#222; padding:3px 0 3px 18px; position:relative; line-height:1.6; }
+  .ref-list li::before { content:'·'; position:absolute; left:4px; color:#14532d; font-weight:700; font-size:16px; top:0; }
+  .ref-list li strong { color:#14532d; }
+
+  /* ── TWO-COLUMN TEXT ── */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .two-col h4 { font-size:14px; font-weight:700; color:#14532d; margin-bottom:10px; }
+  .two-col p, .two-col li { font-size:12px; color:#333; line-height:1.6; }
+
+  /* ── PILL BUTTONS (advantages) ── */
+  .pill {
+    display:flex; align-items:center; gap:14px;
+    background:#15803d; color:white;
+    border-radius:50px; padding:13px 28px;
+    font-weight:700; font-size:14px;
+    margin-bottom:10px;
+  }
+  .pill.amber { background:#d97706; }
+  .pill .pi { font-size:18px; flex-shrink:0; }
+
+  /* ── ORANGE SUBHEADING (like reference "Product Overview", "Why it works") ── */
+  .orange-head { font-size:18px; font-weight:700; color:#d97706; margin-bottom:8px; margin-top:14px; }
+  .orange-head-sm { font-size:14px; font-weight:700; color:#d97706; margin-bottom:6px; }
+
+  /* ── BOLD-LABEL SECTION (problem bullets, etc.) ── */
+  .bold-section { margin-bottom:14px; padding-left:0; }
+  .bold-section h4 { font-size:13.5px; font-weight:700; color:#14532d; margin-bottom:4px; }
+  .bold-section p  { font-size:12.5px; color:#333; line-height:1.6; text-align:justify; }
+  .stat-chip {
+    display:inline-block; background:#fef2f2; color:#b91c1c;
+    border-left:3px solid #ef4444; padding:2px 10px;
+    font-weight:700; font-size:11px; margin-top:5px;
+  }
+
+  /* ── DIVIDER ── */
+  .section-rule { border:none; border-top:2px solid #dcfce7; margin:16px 0; }
+
+  /* ── FEEDBACK BARS ── */
+  .fb-bar-wrap { margin-bottom:12px; }
+  .fb-bar-label { display:flex; justify-content:space-between; font-size:12px; font-weight:600; margin-bottom:5px; }
+  .fb-bar-track { height:10px; background:#e9f5ee; border-radius:2px; overflow:hidden; }
+  .fb-bar-fill  { height:100%; background:#15803d; border-radius:2px; }
+
+  /* ── QUOTE ── */
+  .quote-block {
+    border-left:4px solid #15803d; padding:12px 16px;
+    margin-bottom:10px; font-style:italic;
+    font-size:12.5px; color:#444; line-height:1.65;
+    background:#f0fdf4;
+  }
+  .quote-attr { font-style:normal; font-weight:700; color:#14532d; font-size:11px; margin-top:6px; }
+
+  /* ── IMPACT NUMBERS ── */
+  .impact-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+  .impact-box { background:#14532d; border-radius:8px; padding:22px 12px; text-align:center; }
+  .impact-num  { font-size:36px; font-weight:900; color:#fcd34d; letter-spacing:-1px; }
+  .impact-lbl  { font-size:12px; font-weight:700; color:white; margin-bottom:4px; }
+  .impact-desc { font-size:10.5px; color:rgba(255,255,255,0.65); }
+
+  /* ── TIMELINE ── */
+  .tl { position:relative; padding-left:26px; }
+  .tl::before { content:''; position:absolute; left:7px; top:0; bottom:0; width:2px; background:#dcfce7; }
+  .tl-item { position:relative; margin-bottom:16px; }
+  .tl-dot { position:absolute; left:-23px; top:4px; width:14px; height:14px; background:#15803d; border-radius:50%; border:2px solid white; outline:2px solid #15803d; }
+  .tl-phase { font-size:10px; font-weight:700; color:#d97706; text-transform:uppercase; letter-spacing:0.1em; }
+  .tl-title { font-size:13px; font-weight:700; color:#14532d; margin:2px 0; }
+  .tl-desc  { font-size:11.5px; color:#444; line-height:1.6; }
 
   /* ── COVER ── */
   .cover {
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 297mm;
-    text-align: center;
-    padding: 40px 50px;
-    position: relative;
+    background:transparent; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    min-height:297mm; text-align:center;
+    padding:40px 50px; position:relative;
   }
-  .cover-deco { z-index: 1; position: absolute; border-radius: 50%; background: rgba(255,255,255,0.06); }
-  .cover-deco.d1 { width: 360px; height: 360px; top: -110px; right: -110px; }
-  .cover-deco.d2 { width: 240px; height: 240px; bottom: 60px; left: -80px; }
-  .cover-deco.d3 { width: 120px; height: 120px; top: 160px; left: 60px; }
-
+  .cover-deco { z-index:1; position:absolute; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .cover-deco.d1 { width:360px;height:360px;top:-110px;right:-110px; }
+  .cover-deco.d2 { width:240px;height:240px;bottom:60px;left:-80px; }
+  .cover-deco.d3 { width:120px;height:120px;top:160px;left:60px; }
   .cover-logo-wrap {
-    background: white;
-    border-radius: 20px;
-    padding: 16px 22px 12px;
-    position: relative; z-index: 1;
-    margin-bottom: 28px;
-    box-shadow: 0 6px 32px rgba(0,0,0,0.20);
-    display: inline-flex;
-    align-items: center; justify-content: center;
+    background:white; border-radius:20px; padding:16px 22px 12px;
+    position:relative; z-index:1; margin-bottom:28px;
+    box-shadow:0 6px 32px rgba(0,0,0,0.20);
+    display:inline-flex; align-items:center; justify-content:center;
   }
-  .cover-logo { width: 240px; display: block; }
-
+  .cover-logo { width:240px; display:block; }
   .cover-badge {
-    position: relative; z-index: 1;
-    display: inline-block;
-    border-radius: 4px;
-    padding: 5px 18px;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.10em;
-    margin-bottom: 20px;
+    position:relative; z-index:1; display:inline-block;
+    background:rgba(252,211,77,0.20); border:1px solid rgba(252,211,77,0.50);
+    border-radius:4px; padding:5px 18px;
+    color:#fcd34d; font-size:11px; font-weight:600;
+    letter-spacing:0.10em; margin-bottom:20px;
   }
-
-  .cover-presented { position: relative; z-index: 1; }
-  .cover-team      { position: relative; z-index: 1; }
-  .cover-institute { position: relative; z-index: 1; }
-  .cover-divider   { position: relative; z-index: 1; }
-  .cover-hindi     { position: relative; z-index: 1; }
-  .cover-tagline   { position: relative; z-index: 1; }
-
-  .cover h1 {
-    font-size: 72px; font-weight: 900; color: white;
-    line-height: 1.0; margin-bottom: 10px;
-    letter-spacing: -2px; position: relative; z-index: 1;
-  }
-  .cover h1 span { color: #fcd34d; }
-  .cover-hindi {
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: 21px; font-weight: 700;
-    color: rgba(255,255,255,0.78); margin-bottom: 18px;
-  }
-  .cover-tagline {
-    font-size: 13.5px; color: rgba(255,255,255,0.88);
-    max-width: 400px; margin-bottom: 40px; line-height: 1.7;
-  }
-  .cover-divider {
-    width: 60px; height: 3px;
-    background: #fcd34d;
-    margin: 0 auto 32px;
-  }
-  .cover-presented { color: rgba(255,255,255,0.55); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 8px; }
-  .cover-team { color: white; font-size: 19px; font-weight: 800; margin-bottom: 5px; }
-  .cover-institute { color: rgba(255,255,255,0.60); font-size: 11.5px; }
-
-  /* ── SECTION PAGES ── */
-  .section-page {
-    padding: 26px 46px 32px;
-    display: flex; flex-direction: column;
-  }
-
-  /* Title-bar fallback (now replaced by banners in HTML) */
-  .title-bar { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
-  .title-bar-line { flex:1; height:2px; background:var(--green-pale); margin-top:32px; }
-  .section-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 2px; }
-  .section-title { font-size: 40px; font-weight: 900; color: var(--green-dark); line-height: 1.05; margin-bottom: 4px; letter-spacing: -1px; }
-  .section-subtitle { font-size: 12.5px; color: var(--gray-500); font-weight: 400; }
-
-  /* ── VISION ── */
-  .vision-card {
-    background: transparent; position: relative;
-    border-radius: 10px; padding: 26px 30px;
-    color: white; margin-bottom: 18px;
-  }
-  .vision-card h3 {
-    font-size: 10.5px; font-weight: 700; margin-bottom: 8px;
-    color: #fcd34d; position: relative; z-index: 1;
-    text-transform: uppercase; letter-spacing: 0.14em;
-  }
-  .vision-card p { position: relative; z-index: 1; font-size: 12.5px; line-height: 1.7; color: rgba(255,255,255,0.9); }
-
-  /* Mission cards — flat, no shadow */
-  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-  .mission-card {
-    background: var(--green-bg);
-    border: 1px solid var(--green-pale);
-    border-left: 4px solid var(--green-main);
-    border-radius: 6px;
-    padding: 18px 20px;
-  }
-  .mission-card .icon { font-size: 22px; margin-bottom: 7px; }
-  .mission-card h4 { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 5px; }
-  .mission-card p { font-size: 11.5px; color: var(--gray-700); line-height: 1.6; }
-
-  .note-box {
-    background: var(--amber-light);
-    border-left: 4px solid var(--amber);
-    padding: 13px 17px;
-    font-size: 11.5px; color: #78350f; line-height: 1.6;
-  }
-
-  /* ── PROBLEM ── */
-  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-  .problem-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--green-main);
-    border-radius: 6px;
-    padding: 20px 18px;
-    position: relative; overflow: hidden;
-  }
-  .problem-card::before { display: none; }
-  .problem-card .problem-icon { font-size: 26px; margin-bottom: 9px; }
-  .problem-card h4 { font-size: 13.5px; font-weight: 700; color: var(--green-dark); margin-bottom: 7px; }
-  .problem-card p { font-size: 11.5px; color: var(--gray-700); line-height: 1.55; }
-  .stat-highlight {
-    display: inline-block;
-    background: #fef2f2; color: #b91c1c;
-    border-left: 3px solid #ef4444;
-    padding: 3px 10px;
-    font-weight: 700; font-size: 10.5px; margin-top: 8px;
-  }
-
-  /* ── SOLUTION / SERVICES ── */
-  .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-  .service-card {
-    background: var(--green-bg);
-    border: 1px solid var(--green-pale);
-    border-top: 3px solid var(--green-main);
-    border-radius: 6px;
-    padding: 20px 16px;
-    text-align: center;
-    position: relative;
-  }
-  .service-card::after { display: none; }
-  .service-card .svc-icon { font-size: 30px; margin-bottom: 8px; }
-  .service-card h4 { font-size: 12.5px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
-  .service-card ul { list-style: none; text-align: left; }
-  .service-card ul li { font-size: 11px; color: var(--gray-700); padding: 2.5px 0; display:flex; align-items:center; gap:6px; }
-  .service-card ul li::before { content:''; width:4px; height:4px; background:var(--green-main); border-radius:50%; flex-shrink:0; }
-
-  /* ── FEATURES ── */
-  .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-  .feature-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    background: var(--green-bg);
-    border: 1px solid var(--green-pale);
-    border-left: 4px solid var(--green-main);
-    border-radius: 6px;
-    padding: 13px 15px;
-  }
-  .feature-dot {
-    width: 36px; height: 36px;
-    background: var(--green-main);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 16px; flex-shrink: 0;
-  }
-  .feature-text h5 { font-size: 12px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px; }
-  .feature-text p { font-size: 10.5px; color: var(--gray-500); line-height: 1.5; }
-
-  /* ── WORKFLOW ── */
-  .workflow { display: flex; flex-direction: column; gap: 7px; }
-  .workflow-step {
-    display: flex; align-items: center; gap: 16px;
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--green-main);
-    border-radius: 6px;
-    padding: 11px 18px;
-  }
-  .step-num {
-    width: 36px; height: 36px;
-    background: var(--green-main);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 14px; font-weight: 800; flex-shrink: 0;
-  }
-  .step-text h5 { font-size: 12.5px; font-weight: 700; color: var(--green-dark); }
-  .step-text p { font-size: 11px; color: var(--gray-500); }
-
-  /* ── ADVANTAGE CARDS (used in adv-grid if still present) ── */
-  .adv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-  .adv-card {
-    background: var(--green-bg);
-    border: 1px solid var(--green-pale);
-    border-top: 3px solid var(--amber);
-    border-radius: 6px;
-    padding: 18px 12px;
-    text-align: center;
-  }
-  .adv-card::before { display: none; }
-  .adv-card .icon { font-size: 26px; margin-bottom: 7px; }
-  .adv-card h4 { font-size: 12.5px; font-weight: 700; color: var(--green-dark); margin-bottom: 5px; }
-  .adv-card p { font-size: 11px; color: var(--gray-500); }
-
-  /* ── MARKET LISTS ── */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .list-section h4 {
-    font-size: 14px; font-weight: 700; color: var(--green-dark);
-    margin-bottom: 12px; padding-bottom: 7px;
-    border-bottom: 2px solid var(--green-pale);
-  }
-  .list-item { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 10px; }
-  .list-bullet { width: 7px; height: 7px; background: var(--green-main); border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-  .list-item p { font-size: 12px; color: var(--gray-700); line-height: 1.55; }
-
-  /* ── FEEDBACK BARS ── */
-  .feedback-bar-wrap { margin-bottom: 14px; }
-  .feedback-bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; font-weight: 600; }
-  .feedback-bar-track { height: 11px; background: var(--gray-100); border-radius: 3px; overflow: hidden; }
-  .feedback-bar-fill { height: 100%; background: var(--green-main); border-radius: 3px; }
-
-  .quote-card {
-    background: var(--green-bg);
-    border-left: 4px solid var(--green-main);
-    padding: 14px 18px; margin-bottom: 10px;
-    font-style: italic; font-size: 12px;
-    color: var(--gray-700); line-height: 1.65;
-  }
-  .quote-attr { font-style: normal; font-weight: 700; color: var(--green-dark); font-size: 11px; margin-top: 7px; }
-
-  /* ── IMPACT STATS — solid dark panels, not floating cards ── */
-  .impact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-  .impact-card {
-    background: var(--green-dark);
-    border-radius: 8px;
-    padding: 24px 12px;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .impact-card::after { display: none; }
-  .impact-num { font-size: 38px; font-weight: 900; color: #fcd34d; letter-spacing: -1px; }
-  .impact-unit { font-size: 12px; font-weight: 700; color: white; margin-bottom: 5px; }
-  .impact-desc { font-size: 10.5px; color: rgba(255,255,255,0.65); }
-
-  /* ── TIMELINE ── */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: ''; position: absolute;
-    left: 9px; top: 0; bottom: 0; width: 2px;
-    background: var(--green-pale);
-  }
-  .tl-item { position: relative; margin-bottom: 18px; }
-  .tl-dot {
-    position: absolute; left: -25px; top: 3px;
-    width: 16px; height: 16px;
-    background: var(--green-main); border-radius: 50%;
-    border: 2px solid white; outline: 2px solid var(--green-main);
-  }
-  .tl-phase { font-size: 10px; font-weight: 700; color: var(--amber); text-transform: uppercase; letter-spacing: 0.12em; }
-  .tl-title { font-size: 13.5px; font-weight: 700; color: var(--green-dark); margin: 2px 0; }
-  .tl-desc { font-size: 11.5px; color: var(--gray-700); line-height: 1.6; }
+  .cover h1 { font-size:72px;font-weight:900;color:white;line-height:1.0;margin-bottom:10px;letter-spacing:-2px;position:relative;z-index:1; }
+  .cover h1 span { color:#fcd34d; }
+  .cover-hindi { font-family:'Noto Sans Devanagari',sans-serif; font-size:21px;font-weight:700;color:rgba(255,255,255,0.78);margin-bottom:18px;position:relative;z-index:1; }
+  .cover-tagline { font-size:13.5px;color:rgba(255,255,255,0.88);max-width:400px;margin-bottom:40px;line-height:1.7;position:relative;z-index:1; }
+  .cover-divider { width:60px;height:3px;background:#fcd34d;margin:0 auto 32px;position:relative;z-index:1; }
+  .cover-presented { color:rgba(255,255,255,0.55);font-size:10.5px;text-transform:uppercase;letter-spacing:0.16em;margin-bottom:8px;position:relative;z-index:1; }
+  .cover-team { color:white;font-size:19px;font-weight:800;margin-bottom:5px;position:relative;z-index:1; }
+  .cover-institute { color:rgba(255,255,255,0.60);font-size:11.5px;position:relative;z-index:1; }
 
   /* ── THANK YOU ── */
   .thankyou {
-    background: transparent;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    height: 297mm; text-align: center;
-    padding: 40px 50px; position: relative; overflow: hidden;
+    background:transparent; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    height:297mm; text-align:center;
+    padding:40px 50px; position:relative; overflow:hidden;
   }
-  .thankyou-deco { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .thankyou-deco { position:absolute; border-radius:50%; background:rgba(255,255,255,0.05); }
   .thankyou-logo-wrap {
-    background: white; border-radius: 16px;
-    padding: 14px 20px 10px;
-    position: relative; z-index: 1; margin-bottom: 30px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-    display: inline-flex; align-items: center; justify-content: center;
+    background:white; border-radius:16px; padding:14px 20px 10px;
+    position:relative; z-index:1; margin-bottom:30px;
+    box-shadow:0 4px 24px rgba(0,0,0,0.18);
+    display:inline-flex; align-items:center; justify-content:center;
   }
-  .thankyou-logo { width: 160px; display: block; }
-  .thankyou h2 { font-size: 50px; font-weight: 900; color: white; margin-bottom: 10px; position: relative; z-index: 1; }
-  .thankyou-hindi {
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: 23px; font-weight: 700; color: #fcd34d;
-    margin-bottom: 26px; position: relative; z-index: 1;
-  }
-  .thankyou p { font-size: 14px; color: rgba(255,255,255,0.75); max-width: 400px; line-height: 1.7; position: relative; z-index: 1; }
-  .thankyou-contact {
-    margin-top: 44px; padding: 22px 44px;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 10px; position: relative; z-index: 1;
-  }
-  .thankyou-contact p { font-size: 12px; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
-  .thankyou-contact .strong { font-size: 14px; font-weight: 700; color: white; }
+  .thankyou-logo { width:160px; display:block; }
+  .thankyou h2 { font-size:52px;font-weight:900;color:white;margin-bottom:10px;position:relative;z-index:1; }
+  .thankyou-hindi { font-family:'Noto Sans Devanagari',sans-serif;font-size:23px;font-weight:700;color:#fcd34d;margin-bottom:26px;position:relative;z-index:1; }
+  .thankyou p { font-size:14px;color:rgba(255,255,255,0.75);max-width:400px;line-height:1.7;position:relative;z-index:1; }
+  .thankyou-contact { margin-top:44px;padding:22px 44px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:10px;position:relative;z-index:1; }
+  .thankyou-contact p { font-size:12px;color:rgba(255,255,255,0.8);margin-bottom:4px; }
+  .thankyou-contact .strong { font-size:14px;font-weight:700;color:white; }
 
   /* ── PAGE CHROME ── */
-  .page-num { position: absolute; bottom: 18px; right: 28px; font-size: 10px; color: var(--gray-500); font-weight: 500; }
-  .page-brand { position: absolute; bottom: 18px; left: 28px; font-size: 10px; color: var(--gray-500); font-weight: 600; }
+  .page-num   { position:absolute;bottom:18px;right:28px;font-size:10px;color:#999;font-weight:500; }
+  .page-brand { position:absolute;bottom:18px;left:28px;font-size:10px;color:#999;font-weight:600; }
+  .lang-badge { background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:3px 10px;font-size:10px;color:rgba(255,255,255,0.8); }
 
-  .page-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 9px 46px;
-    border-bottom: 1px solid var(--gray-200);
-    background: white;
-  }
-  .page-header-logo { height: 30px; }
-  .page-header-title { font-size: 10.5px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.08em; text-transform: uppercase; }
-
-  .lang-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 3px 10px; font-size: 10px; color: rgba(255,255,255,0.8); }
-
-  @page { size: A4 portrait; margin: 0; }
-
+  @page { size:A4 portrait; margin:0; }
   @media print {
-    .no-print { display: none !important; }
-    *, *::before, *::after {
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-      color-adjust: exact !important;
-    }
-    body { background: white; margin: 0; padding: 0; }
-    .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; width: 210mm; min-height: 297mm; }
+    .no-print { display:none !important; }
+    *,*::before,*::after { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; color-adjust:exact !important; }
+    body { background:white; margin:0; padding:0; }
+    .page { margin:0;box-shadow:none;page-break-after:always;break-after:page;width:210mm;min-height:297mm; }
   }
 </style>
 </head>
@@ -427,52 +250,46 @@
     <span class="page-header-title">Vision &amp; Mission</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">Our Foundation</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Vision &amp; Mission</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">What drives us to build FarmSeva</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">Vision &amp; Mission</div>
+      <div class="pg-subtitle">What drives us to build FarmSeva</div>
     </div>
 
-    <div class="vision-card" style="margin-bottom:20px;">
-      <svg style="position:absolute;inset:0;width:100%;height:100%;border-radius:20px;z-index:0;" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <defs><linearGradient id="vcGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#14532d"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs>
-    <rect width="100%" height="100%" rx="20" fill="url(#vcGrad)"/>
-  </svg>
-      <h3 style="position:relative;z-index:1;">🎯 Our Vision</h3>
-      <p style="font-size:18px;font-weight:800;margin-bottom:10px;line-height:1.35;position:relative;z-index:1;">
-        "To make farming easy, affordable, and technology-driven for every farmer in India."
-      </p>
-      <p>
-        FarmSeva is a digital marketplace built for Indian farmers — connecting them with equipment owners, skilled labourers, agricultural experts, and AI-powered tools through a single, simple platform accessible even on a basic smartphone.
-      </p>
-    </div>
+    <div class="orange-head">Why We Built FarmSeva</div>
 
-    <div class="mission-grid">
-      <div class="mission-card">
-        <div class="icon">🤝</div>
-        <h4>No Middlemen</h4>
-        <p>We eliminate the middleman entirely. Farmers deal directly with equipment owners, labourers, and experts — getting fair prices and transparent service.</p>
+    <p class="body-text">
+      <strong>FarmSeva is a digital marketplace platform designed to bring affordable, technology-driven agricultural services directly to every Indian farmer.</strong> By connecting farmers with equipment owners, skilled labourers, agricultural experts, and AI-powered tools through a single simple app — we eliminate the middleman, reduce costs, and make modern farming accessible even in the most rural areas.
+    </p>
+
+    <p class="body-text">
+      FarmSeva is built as a <strong>mobile-first Progressive Web App (PWA)</strong> that works offline, requires no Play Store download, and is available in Hindi and English — designed for Bharat, not just urban India.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+      <div style="border-top:3px solid #14532d;padding:14px 0 0;">
+        <div style="font-size:22px;margin-bottom:6px;">🤝</div>
+        <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:5px;">No Middlemen</div>
+        <p style="font-size:12px;color:#444;line-height:1.6;">Farmers deal directly with equipment owners, labourers, and experts — getting fair prices and transparent service.</p>
       </div>
-      <div class="mission-card">
-        <div class="icon">💰</div>
-        <h4>Fair Pricing</h4>
-        <p>Owners set their own rates. FarmSeva does not mark up any booking. We charge zero commission on transactions — our goal is access, not profit.</p>
+      <div style="border-top:3px solid #14532d;padding:14px 0 0;">
+        <div style="font-size:22px;margin-bottom:6px;">💰</div>
+        <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:5px;">Fair Pricing</div>
+        <p style="font-size:12px;color:#444;line-height:1.6;">Owners set their own rates. FarmSeva charges zero commission — our goal is access, not profit.</p>
       </div>
-      <div class="mission-card">
-        <div class="icon">📱</div>
-        <h4>Mobile-First Access</h4>
-        <p>Designed as a mobile-first PWA (Progressive Web App) that works offline, can be added to the home screen, and is available in Hindi and English.</p>
+      <div style="border-top:3px solid #14532d;padding:14px 0 0;">
+        <div style="font-size:22px;margin-bottom:6px;">📱</div>
+        <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:5px;">Mobile-First Access</div>
+        <p style="font-size:12px;color:#444;line-height:1.6;">Works offline, can be added to the home screen, and is available in Hindi and English on any smartphone.</p>
       </div>
-      <div class="mission-card">
-        <div class="icon">🌾</div>
-        <h4>Rural Digitization</h4>
-        <p>We bring digital tools to underdeveloped and rural areas where modern farming technology was previously inaccessible or unaffordable.</p>
+      <div style="border-top:3px solid #14532d;padding:14px 0 0;">
+        <div style="font-size:22px;margin-bottom:6px;">🌾</div>
+        <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:5px;">Rural Digitisation</div>
+        <p style="font-size:12px;color:#444;line-height:1.6;">Bringing digital tools to rural areas where modern farming technology was previously inaccessible or unaffordable.</p>
       </div>
     </div>
 
-    <div class="note-box">
-      <strong>Transparency Note:</strong> FarmSeva does not take a profit cut on any booking. All prices shown are set by the service provider. In specific cases, a minimal charge may apply for GST compliance, registration, or regulatory requirements — but never as platform profit.
+    <div style="background:#fffbeb;border-left:4px solid #d97706;padding:13px 17px;font-size:12px;color:#78350f;line-height:1.6;">
+      <strong>Transparency Note:</strong> FarmSeva charges zero commission on bookings. All prices are set by service providers. Any minimal charge applies only for GST compliance — never as platform profit.
     </div>
   </div>
   <div class="page-brand">FarmSeva — Project Report 2024–25</div>
@@ -489,38 +306,35 @@
     <span class="page-header-title">Problem Statement</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">The Challenge</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">What Farmers Face Every Day</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">Four core problems that FarmSeva is built to solve</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">What Farmers Face Every Day</div>
+      <div class="pg-subtitle">Four core problems that FarmSeva is built to solve</div>
     </div>
 
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">🚜</div>
-        <h4>Unaffordable Equipment</h4>
-        <p>A new tractor costs ₹6–12 lakh. Small and marginal farmers — who make up 86% of India's farming community — cannot afford to purchase one. Renting informally is unorganised, unreliable, and often overpriced.</p>
-        <span class="stat-highlight">86% of Indian farmers are small/marginal</span>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">👨‍🌾</div>
-        <h4>Labour Shortage at Peak Season</h4>
-        <p>During sowing and harvesting seasons, skilled farm labour is in extreme short supply. Farmers wait 3–5 days to find help through local networks, leading to crop loss due to delay.</p>
-        <span class="stat-highlight">Up to 30% yield loss from delayed harvest</span>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">🔬</div>
-        <h4>Crop Disease Goes Undetected</h4>
-        <p>Farmers often cannot identify crop diseases until major damage has occurred. Expert agronomists are rare in rural areas, and by the time help arrives, significant crop loss has already happened.</p>
-        <span class="stat-highlight">India loses ₹50,000 Cr/year to crop diseases</span>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">📞</div>
-        <h4>No Access to Expert Guidance</h4>
-        <p>Quality agricultural consultation is available only to wealthy farmers or those near cities. Rural farmers rely on word-of-mouth advice, which is often incorrect and leads to poor decisions on fertilisers, pesticides, and irrigation.</p>
-        <span class="stat-highlight">1 agronomist per 800+ farmers in rural India</span>
-      </div>
+    <p class="body-text">Indian agriculture is not broken by nature — it is broken by access. Farmers face four compounding problems that together prevent them from reaching their potential.</p>
+
+    <div class="bold-section">
+      <h4>🚜 Unaffordable Equipment</h4>
+      <p>A new tractor costs ₹6–12 lakh — far beyond the reach of small and marginal farmers who make up 86% of India's farming community. Informal rental markets are unorganised, unreliable, and routinely overpriced.</p>
+      <span class="stat-chip">86% of Indian farmers are small or marginal landholders</span>
+    </div>
+
+    <div class="bold-section">
+      <h4>👨‍🌾 Labour Shortage at Peak Season</h4>
+      <p>During sowing and harvesting seasons, skilled farm labour is in extreme short supply. Farmers wait 3–5 days to find help through fragmented local networks, causing direct crop loss from harvest delay.</p>
+      <span class="stat-chip">Up to 30% yield loss attributed to delayed harvesting</span>
+    </div>
+
+    <div class="bold-section">
+      <h4>🔬 Crop Disease Goes Undetected</h4>
+      <p>Farmers cannot identify disease outbreaks until visible damage has spread. Qualified agronomists are scarce in rural India, and by the time expert help arrives, significant crop and income loss has already occurred.</p>
+      <span class="stat-chip">India loses ₹50,000 Cr annually to preventable crop diseases</span>
+    </div>
+
+    <div class="bold-section">
+      <h4>📞 No Access to Expert Guidance</h4>
+      <p>Quality agricultural advice is available only to wealthy or city-adjacent farmers. Rural farmers depend on informal word-of-mouth, leading to costly errors in fertiliser, pesticide, and irrigation decisions.</p>
+      <span class="stat-chip">1 agronomist per 800+ farmers in rural India</span>
     </div>
 
     <div style="background:linear-gradient(135deg,#fef2f2,#fff5f5); border-radius:16px; padding:20px 24px; margin-top:4px; border-left:5px solid #ef4444;">
@@ -544,81 +358,40 @@
     <span class="page-header-title">The Solution</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">What We Built</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">The FarmSeva Platform</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">One app connecting farmers with every service they need</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">The FarmSeva Platform</div>
+      <div class="pg-subtitle">One app connecting farmers with every service they need</div>
     </div>
 
-    <p style="font-size:13px; color:#374151; margin-bottom:24px; line-height:1.7;">
+    <p class="body-text">
       FarmSeva connects <strong>service providers</strong> (equipment owners, labourers, experts) directly with <strong>farmers</strong> through a single mobile-first platform. No middlemen. No markups. Instant booking with transparent pricing.
     </p>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="svc-icon">🚜</div>
-        <h4>Equipment Rental</h4>
-        <ul>
-          <li>Tractors (various HP)</li>
-          <li>Combine Harvesters</li>
-          <li>Agricultural Drones</li>
-          <li>Tiller / Rotavator</li>
-          <li>Sprayers &amp; Seed Drills</li>
-          <li>With or without operator</li>
-        </ul>
+    <div class="orange-head" style="margin-top:4px;">Our Service Categories</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;">
+      <div class="orange-box">
+        <h4>🚜 Equipment Rental</h4>
+        <p>Tractors · Harvesters · Drones · Tillers · Sprayers — with or without operator. Book by the hour or day.</p>
       </div>
-      <div class="service-card">
-        <div class="svc-icon">👨‍🌾</div>
-        <h4>Skilled Labour</h4>
-        <ul>
-          <li>Sowing workers</li>
-          <li>Harvesting labour</li>
-          <li>Irrigation setup crew</li>
-          <li>Field maintenance</li>
-          <li>Daily / seasonal hire</li>
-          <li>Verified &amp; rated</li>
-        </ul>
+      <div class="orange-box">
+        <h4>👨‍🌾 Skilled Labour</h4>
+        <p>Sowing, harvesting, irrigation crews. Verified &amp; rated workers. Daily or seasonal hire at fair wages.</p>
       </div>
-      <div class="service-card">
-        <div class="svc-icon">👨‍💼</div>
-        <h4>Expert Consultation</h4>
-        <ul>
-          <li>Crop advisory sessions</li>
-          <li>Soil health analysis</li>
-          <li>Pest &amp; disease control</li>
-          <li>Yield improvement plans</li>
-          <li>Video / in-person options</li>
-          <li>Certified agri-experts</li>
-        </ul>
+      <div class="orange-box">
+        <h4>👨‍💼 Expert Consultation</h4>
+        <p>Certified agri-experts for crop advisory, soil health, pest control &amp; yield improvement. Video or in-person.</p>
       </div>
-      <div class="service-card">
-        <div class="svc-icon">🔬</div>
-        <h4>AI Disease Detection</h4>
-        <ul>
-          <li>Upload crop photo</li>
-          <li>Instant AI diagnosis</li>
-          <li>Suggested treatment</li>
-          <li>Free for all users</li>
-          <li>Hindi &amp; English output</li>
-          <li>Works offline</li>
-        </ul>
+      <div class="orange-box">
+        <h4>🔬 AI Disease Detection</h4>
+        <p>Upload a crop photo for instant AI diagnosis &amp; treatment advice. Free for all. Works offline in Hindi &amp; English.</p>
       </div>
-      <div class="service-card">
-        <div class="svc-icon">🔧</div>
-        <h4>Repair &amp; Maintenance</h4>
-        <ul>
-          <li>Emergency pump repair</li>
-          <li>Tractor servicing</li>
-          <li>Drip irrigation repair</li>
-          <li>On-farm visits</li>
-          <li>Certified mechanics</li>
-          <li>Same-day response</li>
-        </ul>
+      <div class="orange-box">
+        <h4>🔧 Repair &amp; Maintenance</h4>
+        <p>Emergency pump repair, tractor servicing, drip irrigation repair. Certified mechanics, same-day response.</p>
       </div>
-      <div class="service-card">
-        <div class="svc-icon">👥</div>
-        <h4>Group Booking</h4>
+      <div class="orange-box">
+        <h4>👥 Group Booking</h4>
         <ul>
           <li>5+ farmers pool costs</li>
           <li>Split billing automation</li>
@@ -644,11 +417,9 @@
     <span class="page-header-title">Features &amp; Booking Workflow</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">How It Works</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Key Features &amp; Booking Flow</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">Built for farmers — simple enough for first-time smartphone users</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">Key Features &amp; Booking Flow</div>
+      <div class="pg-subtitle">Built for farmers — simple enough for first-time smartphone users</div>
     </div>
 
     <div class="features-list" style="margin-bottom:16px;">
@@ -738,11 +509,9 @@
     <span class="page-header-title">Market &amp; Competitive Advantage</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">Market Positioning</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Who We Serve &amp; Why We Win</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">Target audience, market demand, and our unique advantages</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">Who We Serve &amp; Why We Win</div>
+      <div class="pg-subtitle">Target audience, market demand, and our unique advantages</div>
     </div>
 
     <div class="two-col" style="margin-bottom:24px;">
@@ -809,11 +578,9 @@
     <span class="page-header-title">Impact &amp; Farmer Feedback</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">Real-World Validation</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Impact &amp; Farmer Feedback</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">What farmers said when we asked them directly</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">Impact &amp; Farmer Feedback</div>
+      <div class="pg-subtitle">What farmers said when we asked them directly</div>
     </div>
 
     <div class="impact-grid" style="margin-bottom:28px;">
@@ -939,11 +706,9 @@
     <span class="page-header-title">Innovation &amp; Future Scope</span>
   </div>
   <div class="section-page">
-    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
-      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">USP &amp; Roadmap</div>
-      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Innovation &amp; How We Expand</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">FarmSeva is a smart farming ecosystem, not just a booking app</div>
+    <div style="margin-bottom:20px;">
+      <div class="pg-title">Innovation &amp; How We Expand</div>
+      <div class="pg-subtitle">FarmSeva is a smart farming ecosystem, not just a booking app</div>
     </div>
 
     <div class="vision-card" style="margin-bottom:24px; background:transparent; position:relative;">
