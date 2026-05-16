@@ -179,45 +179,12 @@
     z-index: 1;
   }
 
-  /* Amber accent strip at very top of content */
-  .title-bar {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  .title-bar-line {
-    flex: 1;
-    height: 3px;
-    background: linear-gradient(to right, var(--amber-warm), rgba(245,158,11,0.08));
-    border-radius: 2px;
-    margin-top: 34px;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 2px;
-  }
-
-  .section-title {
-    font-size: 44px;
-    font-weight: 900;
-    color: var(--green-dark);
-    line-height: 1.0;
-    margin-bottom: 5px;
-    letter-spacing: -1.5px;
-  }
-
-  .section-subtitle {
-    font-size: 13px;
-    color: var(--gray-500);
-    margin-bottom: 0;
-    font-weight: 400;
-  }
+  /* Title-bar kept for fallback compatibility */
+  .title-bar { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .title-bar-line { flex: 1; height: 3px; background: linear-gradient(to right, var(--amber-warm), transparent); border-radius: 2px; margin-top: 34px; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 2px; }
+  .section-title { font-size: 44px; font-weight: 900; color: var(--green-dark); line-height: 1.0; margin-bottom: 5px; letter-spacing: -1.5px; }
+  .section-subtitle { font-size: 13px; color: var(--gray-500); margin-bottom: 0; font-weight: 400; }
 
   /* ─── VISION SECTION ─── */
   .vision-card {
@@ -410,7 +377,7 @@
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
     background: linear-gradient(to right, var(--green-dark), var(--green-light));
   }
-  .impact-num { font-size: 40px; font-weight: 900; color: var(--green-main); }
+  .impact-num { font-size: 42px; font-weight: 900; color: var(--green-main); letter-spacing: -1px; }
   .impact-unit { font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
   .impact-desc { font-size: 11px; color: var(--gray-500); }
 
@@ -550,13 +517,12 @@
     <span class="page-header-title">Vision &amp; Mission</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">Our Foundation</div>
-        <div class="section-title">Vision &amp; Mission</div>
-        <div class="section-subtitle">What drives us to build FarmSeva</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">Our Foundation</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Vision &amp; Mission</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">What drives us to build FarmSeva</div>
     </div>
 
     <div class="vision-card" style="margin-bottom:20px;">
@@ -614,13 +580,12 @@
     <span class="page-header-title">Problem Statement</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">The Challenge</div>
-        <div class="section-title">What Farmers Face Every Day</div>
-        <div class="section-subtitle">Four core problems that FarmSeva is built to solve</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">The Challenge</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">What Farmers Face Every Day</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">Four core problems that FarmSeva is built to solve</div>
     </div>
 
     <div class="problem-grid">
@@ -675,13 +640,12 @@
     <span class="page-header-title">The Solution</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">What We Built</div>
-        <div class="section-title">The FarmSeva Platform</div>
-        <div class="section-subtitle">One app connecting farmers with every service they need</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">What We Built</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">The FarmSeva Platform</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">One app connecting farmers with every service they need</div>
     </div>
 
     <p style="font-size:13px; color:#374151; margin-bottom:24px; line-height:1.7;">
@@ -777,13 +741,12 @@
     <span class="page-header-title">Features &amp; Booking Workflow</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">How It Works</div>
-        <div class="section-title">Key Features &amp; Booking Flow</div>
-        <div class="section-subtitle">Built for farmers — simple enough for first-time smartphone users</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">How It Works</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Key Features &amp; Booking Flow</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">Built for farmers — simple enough for first-time smartphone users</div>
     </div>
 
     <div class="features-list" style="margin-bottom:16px;">
@@ -873,13 +836,12 @@
     <span class="page-header-title">Market &amp; Competitive Advantage</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">Market Positioning</div>
-        <div class="section-title">Who We Serve &amp; Why We Win</div>
-        <div class="section-subtitle">Target audience, market demand, and our unique advantages</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">Market Positioning</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Who We Serve &amp; Why We Win</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">Target audience, market demand, and our unique advantages</div>
     </div>
 
     <div class="two-col" style="margin-bottom:24px;">
@@ -901,37 +863,34 @@
       </div>
     </div>
 
-    <div style="font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid #fef3c7;">✦ Our Competitive Advantage</div>
-    <div class="adv-grid">
-      <div class="adv-card">
-        <div class="icon">🚫</div>
-        <h4>Zero Middlemen</h4>
-        <p>Direct farmer-to-provider connection. No agent fees, no commission markup.</p>
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:22px;align-items:center;">
+      <!-- Left visual identity panel -->
+      <div style="background:linear-gradient(160deg,#f0fdf4,#dcfce7);border-radius:20px;padding:26px 16px;text-align:center;border:2px solid #bbf7d0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <div style="font-size:52px;margin-bottom:10px;">🌾</div>
+        <div style="font-size:20px;font-weight:900;color:#14532d;line-height:1.1;">Farm<span style="color:#d97706;">Seva</span></div>
+        <div style="font-size:9px;color:#6b7280;margin-top:6px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;">Why We Win</div>
+        <div style="width:40px;height:3px;background:linear-gradient(to right,#15803d,#f59e0b);border-radius:2px;margin:10px auto 0;"></div>
       </div>
-      <div class="adv-card">
-        <div class="icon">🤖</div>
-        <h4>AI Integration</h4>
-        <p>Built-in crop disease detection using AI — free for every farmer, no subscription needed.</p>
-      </div>
-      <div class="adv-card">
-        <div class="icon">🌐</div>
-        <h4>All-in-One Platform</h4>
-        <p>Equipment + Labour + Experts + AI + Group Booking — all in a single app.</p>
-      </div>
-      <div class="adv-card">
-        <div class="icon">🇮🇳</div>
-        <h4>Truly Localised</h4>
-        <p>Hindi-first UI, WhatsApp/SMS notifications, voice support — built for Bharat, not just urban India.</p>
-      </div>
-      <div class="adv-card">
-        <div class="icon">📲</div>
-        <h4>No App Download</h4>
-        <p>PWA works on any phone via browser. Add to home screen like a native app — no Play Store needed.</p>
-      </div>
-      <div class="adv-card">
-        <div class="icon">💸</div>
-        <h4>Provider Incentives</h4>
-        <p>₹500 welcome bonus for new providers + weekly bank transfer ensures quality supply-side growth.</p>
+      <!-- Right pill buttons -->
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div style="background:#15803d;color:white;border-radius:50px;padding:13px 26px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(21,128,61,0.28);">
+          <span style="font-size:19px;flex-shrink:0;">🚫</span><div><strong>Zero Middlemen</strong> — Direct farmer-to-provider, no agent fees</div>
+        </div>
+        <div style="background:#15803d;color:white;border-radius:50px;padding:13px 26px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(21,128,61,0.28);">
+          <span style="font-size:19px;flex-shrink:0;">🤖</span><div><strong>AI Disease Detection</strong> — Free for every farmer, no subscription</div>
+        </div>
+        <div style="background:#14532d;color:white;border-radius:50px;padding:13px 26px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(20,83,45,0.28);">
+          <span style="font-size:19px;flex-shrink:0;">🌐</span><div><strong>All-in-One Platform</strong> — Equipment + Labour + Experts + AI</div>
+        </div>
+        <div style="background:#14532d;color:white;border-radius:50px;padding:13px 26px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(20,83,45,0.28);">
+          <span style="font-size:19px;flex-shrink:0;">📲</span><div><strong>No App Download</strong> — Works in browser, add to home screen</div>
+        </div>
+        <div style="background:#d97706;color:white;border-radius:50px;padding:13px 26px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(217,119,6,0.28);">
+          <span style="font-size:19px;flex-shrink:0;">🇮🇳</span><div><strong>Hindi-First & Local</strong> — Built for Bharat, not just urban India</div>
+        </div>
+        <div style="background:#d97706;color:white;border-radius:50px;padding:13px 26px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(217,119,6,0.28);">
+          <span style="font-size:19px;flex-shrink:0;">💸</span><div><strong>Provider ₹500 Bonus</strong> — Quality supply-side growth incentive</div>
+        </div>
       </div>
     </div>
   </div>
@@ -949,13 +908,12 @@
     <span class="page-header-title">Impact &amp; Farmer Feedback</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">Real-World Validation</div>
-        <div class="section-title">Impact &amp; Farmer Feedback</div>
-        <div class="section-subtitle">What farmers said when we asked them directly</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">Real-World Validation</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Impact &amp; Farmer Feedback</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">What farmers said when we asked them directly</div>
     </div>
 
     <div class="impact-grid" style="margin-bottom:28px;">
@@ -1081,13 +1039,12 @@
     <span class="page-header-title">Innovation &amp; Future Scope</span>
   </div>
   <div class="section-page">
-    <div class="title-bar">
-      <div>
-        <div class="section-label">USP &amp; Roadmap</div>
-        <div class="section-title">Innovation &amp; How We Expand</div>
-        <div class="section-subtitle">FarmSeva is a smart farming ecosystem, not just a booking app</div>
-      </div>
-      <div class="title-bar-line"></div>
+    <div style="background:linear-gradient(135deg,#14532d 0%,#15803d 55%,#166534 100%);padding:20px 46px 26px;margin:-26px -46px 26px;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;pointer-events:none;"></div>
+      <div style="position:absolute;left:40%;bottom:-50px;width:130px;height:130px;background:rgba(252,211,77,0.07);border-radius:50%;pointer-events:none;"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px;">USP &amp; Roadmap</div>
+      <div style="font-size:44px;font-weight:900;color:white;line-height:1.0;letter-spacing:-1.5px;">Innovation &amp; How We Expand</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;">FarmSeva is a smart farming ecosystem, not just a booking app</div>
     </div>
 
     <div class="vision-card" style="margin-bottom:24px; background:transparent; position:relative;">
