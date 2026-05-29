@@ -469,19 +469,11 @@
 <script>
   let currentStep = 1;
 
-  // Service type card toggle
+  // Service type card toggle — rely solely on the native <label> checkbox binding
+  // to avoid the double-toggle bug (card click + label click both fire otherwise)
   document.querySelectorAll('.service-checkbox').forEach(cb => {
     cb.addEventListener('change', () => {
       const card = cb.closest('label').querySelector('.service-type-card');
-      card.classList.toggle('selected-service-type', cb.checked);
-    });
-  });
-
-  // Click on card toggles checkbox
-  document.querySelectorAll('.service-type-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const cb = card.closest('label').querySelector('.service-checkbox');
-      cb.checked = !cb.checked;
       card.classList.toggle('selected-service-type', cb.checked);
     });
   });
