@@ -172,7 +172,7 @@
       </div>
 
       <div class="mt-3 flex justify-end">
-        <button onclick="cancelWithConfirm()" class="text-red-400 hover:text-red-600 text-xs font-medium hover:underline" data-translate="cancel-booking">Cancel Booking</button>
+        <button onclick="cancelWithConfirm(this)" class="text-red-400 hover:text-red-600 text-xs font-medium hover:underline" data-translate="cancel-booking">Cancel Booking</button>
       </div>
     </div>
 
@@ -229,7 +229,7 @@
       </div>
       <div class="mt-3 flex justify-between items-center">
         <button onclick="showToast('Calling Kailash...', 'Connecting you to your worker.', '📞')" class="text-blue-600 text-xs font-semibold hover:underline">📞 <span data-translate="contact-worker">Contact Worker</span></button>
-        <button onclick="cancelWithConfirm()" class="text-red-400 hover:text-red-600 text-xs font-medium hover:underline" data-translate="cancel-booking">Cancel</button>
+        <button onclick="cancelWithConfirm(this)" class="text-red-400 hover:text-red-600 text-xs font-medium hover:underline" data-translate="cancel-booking">Cancel</button>
       </div>
     </div>
   </section>
@@ -409,10 +409,33 @@
     showToast(name + ' added to cart!', 'Go to My Bookings to confirm.', '🛒');
   }
 
-  function cancelWithConfirm() {
-    if (confirm('Are you sure you want to cancel this booking? Cancellation charges may apply.')) {
-      showToast('Booking Cancelled', 'Your booking has been cancelled. Refund in 3-5 days.', '❌');
-    }
+  function cancelWithConfirm(btn) {
+    if (!confirm('Are you sure you want to cancel this booking?\nCancellation charges may apply.')) return;
+
+    // Walk up to the booking card (booking-track-card)
+    const card = btn.closest('.booking-track-card');
+    if (!card) return;
+
+    // Animate out
+    card.style.transition = 'opacity 0.35s ease, transform 0.35s ease, max-height 0.4s ease, margin 0.4s ease, padding 0.4s ease';
+    card.style.overflow = 'hidden';
+    card.style.maxHeight = card.offsetHeight + 'px';
+    requestAnimationFrame(() => {
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.96)';
+      card.style.maxHeight = '0';
+      card.style.marginBottom = '0';
+      card.style.paddingTop = '0';
+      card.style.paddingBottom = '0';
+    });
+
+    setTimeout(() => {
+      card.remove();
+      // Update active count
+      const countEl = document.getElementById('active-count');
+      if (countEl) countEl.textContent = Math.max(0, parseInt(countEl.textContent || '0') - 1);
+      showToast('Booking Cancelled', 'Your booking has been cancelled successfully.', '❌');
+    }, 420);
   }
 
   function updateCartBadge(count) {
